@@ -1,0 +1,37 @@
+<!-- <span class="checkbox-all">
+  <mat-checkbox class="example-margin"
+                [checked]="allComplete"
+                [indeterminate]="someComplete()"
+                (change)="setAll($event.checked)">
+    <span class="dichiarazioni-obligatorie-all">Apponendo il segno di spunta nel campo checkbox a lato dichiaro di aver letto, confermato e/o accettato tutti gli undici(11) punti della sezione "Dichiarazioni obligatorie"</span>
+  </mat-checkbox>
+</span>
+<section class="dichiarazioni-obligatorie-section"> -->
+<div [formGroup]="dich">
+	<div formArrayName="dichiarazionis">
+		<div *ngFor="let var_dichiarazione of dichiarazioniFormGroup.controls; let i = index;">
+			<!-- {{i}}: {{getDichiarazioneFormGroup(i).controls['dichiarazione'].value}} -->
+			<mat-error *ngIf="getDichiarazioniFormGroup(i).controls['stato'].hasError('required') && 
+				(getDichiarazioniFormGroup(i).controls['stato'].dirty || 
+				getDichiarazioniFormGroup(i).controls['stato'].touched)">
+				<span>Dichiarazione obligatoria!</span>
+			</mat-error>
+			<div class="form-row" [formGroupName]="i">
+				<div class="col">
+					<mat-checkbox color="primary" formControlName="stato" labelPosition="after" (change)="updateAllComplete()">
+					<span class="mat-checkbox-layout">
+						{{getDichiarazioniFormGroup(i).controls['dichiarazione'].value}}
+						<!-- {{getDichiarazioniFormGroup(i).controls['stato'].value}} -->
+					</span>
+					<span *ngIf="i===10">
+						<a  target="_blank" href="http://www.jemolo.it/jemolo/informativa-sul-trattamento-dei-dati-degli-iscritti-allelenco-roster/">Informativa sul trattamento dei dati degli iscritti all'elenco roster</a>
+						<!-- {{getDichiarazioniFormGroup(i).controls['stato'].value}} -->
+					</span>
+					</mat-checkbox>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- </section> -->
+<!-- <div><span class="disclaimer-dichiarazioni-obligatorie">SI PREGA DI PROCEDERE ALLA CANCELLAZIONE DELLA REGISTRAZIONE QUALORA NON SI ABBIANO PIU&#768; I REQUISITI OBBLIGATORI RICHIESTI</span></div> -->

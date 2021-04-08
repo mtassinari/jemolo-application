@@ -1,0 +1,23 @@
+{
+  "jemoloApplicationApp": {
+    "allegato": {
+      "home": {
+        "title": "Allegatoes",
+        "createLabel": "Create a new Allegato",
+        "createOrEditLabel": "Create or edit a Allegato",
+        "notFound": "No Allegatoes found"
+      },
+      "created": "A new Allegato is created with identifier {{ param }}",
+      "updated": "A Allegato is updated with identifier {{ param }}",
+      "deleted": "A Allegato is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Allegato {{ id }}?"
+      },
+      "detail": {
+        "title": "Allegato"
+      },
+      "data": "Data",
+      "curriculum": "Curriculum"
+    }
+  }
+}

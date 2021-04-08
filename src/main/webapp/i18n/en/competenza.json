@@ -1,0 +1,26 @@
+{
+  "jemoloApplicationApp": {
+    "competenza": {
+      "home": {
+        "title": "Competenzas",
+        "createLabel": "Create a new Competenza",
+        "createOrEditLabel": "Create or edit a Competenza",
+        "notFound": "No Competenzas found"
+      },
+      "created": "A new Competenza is created with identifier {{ param }}",
+      "updated": "A Competenza is updated with identifier {{ param }}",
+      "deleted": "A Competenza is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Competenza {{ id }}?"
+      },
+      "detail": {
+        "title": "Competenza"
+      },
+      "descrizione": "Descrizione",
+      "anniEsperianza": "Anni Esperianza",
+      "note": "Note",
+      "candidato": "Candidato",
+      "ambito": "Ambito"
+    }
+  }
+}

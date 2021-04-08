@@ -1,0 +1,63 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+    <changeSet author="mtassinari (generated)" id="1568963456704-8">
+        <createTable tableName="stato_registrazione">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="stato_registrazionePK"/>
+            </column>
+            <column name="descrizione" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="1568963456704-8-data" author="mtassinari (generated)">
+        <loadData
+                  file="config/liquibase/data/stato_registrazione.csv"
+                  separator=";"
+                  tableName="stato_registrazione">
+            <column name="id" type="numeric"/>
+            <column name="descrizione" type="string"/>
+        </loadData>
+    </changeSet>
+    <changeSet author="mtassinari (generated)" id="1568963456704-9">
+        <addColumn tableName="candidato">
+            <column name="activation_key" type="varchar(20)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="mtassinari (generated)" id="1568963456704-10">
+        <addColumn tableName="candidato">
+            <column name="lang_key" type="varchar(10)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="mtassinari (generated)" id="1568963456704-11">
+        <addColumn tableName="candidato">
+            <column name="password_hash" type="varchar(60)" defaultValue="$2a$10$lAxCVZUK5IXrXBZCBgRur.zZb0RsTVwf6O464FvF32JRE9s3Pd8hK">
+                <constraints nullable="false"/>
+            </column>
+        </addColumn>
+    </changeSet>
+    <changeSet author="mtassinari (generated)" id="1568963456704-12">
+        <addColumn tableName="candidato">
+            <column name="reset_date" type="timestamp"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="mtassinari (generated)" id="1568963456704-13">
+        <addColumn tableName="candidato">
+            <column name="reset_key" type="varchar(20)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="mtassinari (generated)" id="1568963456704-14">
+        <addColumn tableName="candidato">
+            <column name="stato_id" type="int8"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="mtassinari (generated)" id="1568963456704-15">
+        <addForeignKeyConstraint baseColumnNames="stato_id" baseTableName="candidato" constraintName="FK_cndidato_stato_id" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="stato_registrazione" validate="true"/>
+    </changeSet>
+    <changeSet author="mtassinari (generated)" id="1568963456704-1">
+        <setTableRemarks tableName="candidato"/>
+    </changeSet>
+    <changeSet author="mtassinari (generated)" id="1568963456704-2">
+        <setTableRemarks tableName="competenza"/>
+    </changeSet>
+</databaseChangeLog>

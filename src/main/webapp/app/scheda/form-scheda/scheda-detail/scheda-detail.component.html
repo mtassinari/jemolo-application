@@ -1,0 +1,67 @@
+<!-- Media top -->
+<div class="media">
+  <img src="/roster-jemolo/content/images/img_avatar1.png" class="align-self-start mr-3" style="width:60px">
+  <div class="media-body">
+<!-- <jhi-alert></jhi-alert> -->
+    <h4><b>{{formSchedaCandidato.id}}</b> {{formSchedaCandidato.nome}} {{formSchedaCandidato.cognome}}</h4>
+    <div>
+    <!-- <h5>Dati anagrafici</h5> -->
+	<ul class="list-group list-group-flush">
+	  <li class="list-group-item"><h5><mat-icon>person</mat-icon>Dati anagrafici</h5></li>
+	  <li class="list-group-item">Nato a <b><i>{{formSchedaCandidato.luogoNascita}}</i></b> il <b><i>{{formSchedaCandidato.dataNascita | date: 'dd/MM/yyyy'}}</i></b></li>
+	  <li class="list-group-item">Codice fiscale: <b>{{formSchedaCandidato.candidato.codiceFiscale}}</b></li>
+	  <li class="list-group-item">Professione: {{formSchedaCandidato.professione}}</li>
+	  <li class="list-group-item">Recapito telefonico: mobile {{formSchedaCandidato.numeroTelefonoCellulare}}
+	  <ng-container *ngIf="formSchedaCandidato.numeroTelefonoFisso"> fisso: {{formSchedaCandidato.numeroTelefonoFisso}}</ng-container></li>
+	  <li class="list-group-item">Indirizzo email: {{formSchedaCandidato.candidato.email}}</li>
+	  <li *ngIf="formSchedaCandidato.indirizzoPec" class="list-group-item">Indirizzo PEC: {{formSchedaCandidato.indirizzoPec}}</li>
+	  <li class="list-group-item">Indirizzo residenza: {{formSchedaCandidato.indirizzoResidenza}} {{formSchedaCandidato.capResidenza}} 
+	  {{formSchedaCandidato.comuneResidenza}} ({{formSchedaCandidato.provinciaResidenza}})</li>
+	  <li class="list-group-item"><h5><mat-icon>school</mat-icon> Titoli di studio</h5></li>
+	  <ng-container *ngFor="let titolo of formSchedaCandidato.titoloStudios">
+	  <li class="list-group-item">Tipologia: <b>{{getTipologia(titolo.tipologia)}}</b></li>
+	  <li class="list-group-item">Descrizione: <b>{{titolo.descrizione}}</b></li>
+	  <li class="list-group-item">Conseguimento: <b>{{titolo.conseguimento}}</b> anno <b>{{titolo.anno}}</b> con il voto voto <b>{{titolo.voto}}</b></li>
+	  <ng-container *ngIf="formSchedaCandidato.specializzazioneMaster"><li class="list-group-item">Dichiaro di aver conseguito una specializzazione universitaria dimostrata attraverso il possesso di titoli di master di I o II livello o corsi di specializzazione nelle materie per cui si chiede l'iscrizione al ROSTER (da specificare nel CV);</li></ng-container>
+	  <ng-container *ngIf="formSchedaCandidato.iscrizioneAlbo"><li class="list-group-item">Dichiaro di essere iscritto ad ordini e albi professionali;</li></ng-container>
+	  <ng-container *ngIf="formSchedaCandidato.operatoreCampo"><li class="list-group-item">Dichiaro di essere un operatore nel campo dell'arte, dello spettacolo, dei mestieri artigianali, dell'attivita&#768; informatica,	a supporto dell'attivita&#768; didattica e ricerca ovvero in altri ambiti tecnico-professionali;</li></ng-container>
+	  <ng-container *ngIf="formSchedaCandidato.esperienzaBiennale"><li class="list-group-item">Dichiaro di avere una comprovata e rilevante esperienza di lavoro almeno biennale nelle Aree di competenza;</li></ng-container>
+	  </ng-container>
+	  <li class="list-group-item"><h5><mat-icon>work</mat-icon> Competenze</h5></li>
+	  <ng-container *ngFor="let competenza of formSchedaCandidato.competenzas">
+	  <li class="list-group-item"><b>{{competenza.descrizione}} ({{competenza.anniEsperianza}} anni di esperienza)</b></li>
+	  </ng-container>
+	  <li class="list-group-item"><h5><mat-icon>language</mat-icon> Lingue</h5></li>
+	  <ng-container *ngFor="let lingue of formSchedaCandidato.competenzeLngs">
+	  <li class="list-group-item"><b>{{lingue.lingua.lingua}}</b> livello <b>{{getLivello(lingue.livello)}}</b></li>
+	  </ng-container>
+	  <li class="list-group-item"><h5><mat-icon>playlist_add_check</mat-icon> Dichiarazioni obbligatorie</h5></li>
+	  <ng-container *ngFor="let dichiarazioni of formSchedaCandidato.dichiarazionis; let i = index;">
+	  <li class="list-group-item"><!-- input type="checkbox" class="form-check-input" [checked]="dichiarazioni.stato" [disabled]="dichiarazioni.stato"-->{{dichiarazioni.dichiarazioni.descrizione}}
+					<span *ngIf="i===10">
+						<a  target="_blank" href="http://www.jemolo.it/jemolo/informativa-sul-trattamento-dei-dati-degli-iscritti-allelenco-roster/">Informativa sul trattamento dei dati degli iscritti all'elenco roster</a>
+						<!-- {{getDichiarazioniFormGroup(i).controls['stato'].value}} -->
+					</span> <mat-icon *ngIf="dichiarazioni.stato">check</mat-icon>
+	  </li>
+	  </ng-container>
+	  <li class="list-group-item"><h5><mat-icon>attachment</mat-icon> Cv</h5></li>	
+	  <ng-container *ngFor="let curricula of formSchedaCandidato.curricula">
+	  <li class="list-group-item">Inserito il <b>{{curricula.createdDate | date: 'dd/MM/yyyy'}}</b>, ultima modifica il <b>{{curricula.lastModifiedDate | date: 'dd/MM/yyyy'}}</b></li>
+	  <li class="list-group-item"><b><a (click)="downloadCv(curricula.id, curricula.cv)"><mat-icon>cloud_download</mat-icon> {{curricula.cv}}</a> ({{formatBytes(curricula.size)}})</b></li>
+	  </ng-container>
+	</ul>    
+    <!-- <h5>Titolo di studio</h5> -->
+	</div>
+            <!-- <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button> -->
+
+            <button type="button"
+                    [routerLink]="['/jemoloiscritto/scheda', formSchedaCandidato.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+  </div>
+</div>

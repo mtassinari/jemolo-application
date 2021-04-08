@@ -1,0 +1,92 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-titolo-studio-heading" jhiTranslate="jemoloApplicationApp.titoloStudio.home.createOrEditLabel">Create or edit a Titolo Studio</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!editForm.get('id').value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jemoloApplicationApp.titoloStudio.tipologia" for="field_tipologia">Tipologia</label>
+                    <input type="text" class="form-control" name="tipologia" id="field_tipologia"
+                           formControlName="tipologia"/>
+                    <div *ngIf="editForm.get('tipologia').invalid && (editForm.get('tipologia').dirty || editForm.get('tipologia').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('tipologia').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jemoloApplicationApp.titoloStudio.descrizione" for="field_descrizione">Descrizione</label>
+                    <input type="text" class="form-control" name="descrizione" id="field_descrizione"
+                           formControlName="descrizione"/>
+                    <div *ngIf="editForm.get('descrizione').invalid && (editForm.get('descrizione').dirty || editForm.get('descrizione').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('descrizione').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jemoloApplicationApp.titoloStudio.conseguimento" for="field_conseguimento">Conseguimento</label>
+                    <input type="text" class="form-control" name="conseguimento" id="field_conseguimento"
+                           formControlName="conseguimento"/>
+                    <div *ngIf="editForm.get('conseguimento').invalid && (editForm.get('conseguimento').dirty || editForm.get('conseguimento').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('conseguimento').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jemoloApplicationApp.titoloStudio.anno" for="field_anno">Anno</label>
+                    <input type="text" class="form-control" name="anno" id="field_anno"
+                           formControlName="anno"/>
+                    <div *ngIf="editForm.get('anno').invalid && (editForm.get('anno').dirty || editForm.get('anno').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('anno').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jemoloApplicationApp.titoloStudio.voto" for="field_voto">Voto</label>
+                    <input type="text" class="form-control" name="voto" id="field_voto"
+                           formControlName="voto"/>
+                    <div *ngIf="editForm.get('voto').invalid && (editForm.get('voto').dirty || editForm.get('voto').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('voto').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jemoloApplicationApp.titoloStudio.candidato" for="field_candidato">Candidato</label>
+                    <select class="form-control" id="field_anagrafica" name="anagrafica" formControlName="anagraficaId">
+                        <option *ngIf="!editForm.get('anagraficaId').value" [ngValue]="null" selected></option>
+                        <option [ngValue]="anagraficaCandidatoOption.id" *ngFor="let anagraficaCandidatoOption of anagraficacandidatoes; trackBy: trackAnagraficaCandidatoById">{{anagraficaCandidatoOption.id}}</option>
+                    </select>
+                </div>
+                <div *ngIf="editForm.get('anagraficaId').invalid && (editForm.get('anagraficaId').dirty || editForm.get('anagraficaId').touched)">
+                    <small class="form-text text-danger"
+                           *ngIf="editForm.get('anagraficaId').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                    </small>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,41 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="ambitoCompetenza">
+            <h2><span jhiTranslate="jemoloApplicationApp.ambitoCompetenza.detail.title">Ambito Competenza</span> {{ambitoCompetenza.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="jemoloApplicationApp.ambitoCompetenza.descrizione">Descrizione</span></dt>
+                <dd>
+                    <span>{{ambitoCompetenza.descrizione}}</span>
+                </dd>
+                <dt><span jhiTranslate="jemoloApplicationApp.ambitoCompetenza.tipo">Tipo</span></dt>
+                <dd>
+                    <span>{{ambitoCompetenza.tipo}}</span>
+                </dd>
+                <dt><span>Stato</span></dt>
+                <dd>
+                    <span>{{ ambitoCompetenza.stato }}</span>
+                </dd>
+                <dt><span jhiTranslate="jemoloApplicationApp.ambitoCompetenza.ambito">Ambito</span></dt>
+                <dd>
+                    <div *ngIf="ambitoCompetenza.ambitoId">
+                        <a [routerLink]="['/jemolouser/ambito-competenza', ambitoCompetenza.ambitoId, 'view']">{{ambitoCompetenza.ambito.descrizione}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/jemolouser/ambito-competenza', ambitoCompetenza.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

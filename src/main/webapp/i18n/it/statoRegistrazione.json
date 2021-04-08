@@ -1,0 +1,23 @@
+{
+  "jemoloApplicationApp": {
+    "statoRegistrazione": {
+      "home": {
+        "title": "StatoRegistraziones",
+        "createLabel": "Genera un nuovo Stato Registrazione",
+        "createOrEditLabel": "Genera o modifica un Stato Registrazione",
+        "notFound": "No Stato Registraziones found"
+      },
+      "created": "&Egrave; stato generato un nuovo Stato Registrazione con identificatore {{ param }}",
+      "updated": "&Egrave; stato aggiornato Stato Registrazione identificato da {{ param }}",
+      "deleted": "&Egrave; stato eliminato Stato Registrazione con identificatore {{ param }}",
+      "delete": {
+        "question": "Sei sicuro di volere eliminare Stato Registrazione {{ id }}?"
+      },
+      "detail": {
+        "title": "Stato Registrazione"
+      },
+      "stato": "Stato",
+      "candidato": "Candidato"
+    }
+  }
+}

@@ -1,0 +1,133 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+    <changeSet author="mtassinari (generated)" id="1572556136344-8">
+        <createTable tableName="ambito_competenza">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="ambito_competenzaPK"/>
+            </column>
+            <column name="descrizione" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="tipo" type="VARCHAR(255)"/>
+            <column name="ambito_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="mtassinari (generated)" id="1572556136344-9">
+        <createTable tableName="competenze_lng">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="competenze_lngPK"/>
+            </column>
+            <column name="livello" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="candidato_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="lingua_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="mtassinari (generated)" id="1572556136344-10">
+        <createTable tableName="curriculum">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="curriculumPK"/>
+            </column>
+            <column name="cv" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="note" type="VARCHAR(255)"/>
+            <column name="candidato_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="mtassinari (generated)" id="1572556136344-11">
+        <createTable tableName="lingua">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="linguaPK"/>
+            </column>
+            <column name="lingua" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="mtassinari (generated)" id="1572556136344-12">
+        <createTable tableName="titolo_studio">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="titolo_studioPK"/>
+            </column>
+            <column name="anno" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="conseguimento" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="descrizione" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="tipologia" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="voto" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="candidato_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="mtassinari (generated)" id="1572556136344-13">
+        <addColumn tableName="competenza">
+            <column name="ambito_comp_id" type="int8">
+                <constraints nullable="false"/>
+            </column>
+        </addColumn>
+    </changeSet>
+    <changeSet author="mtassinari (generated)" id="1572556136344-14">
+        <addColumn tableName="competenza">
+            <column name="candidato_id" type="int8">
+                <constraints nullable="false"/>
+            </column>
+        </addColumn>
+    </changeSet>
+    <changeSet author="mtassinari (generated)" id="1572556136344-15">
+        <addForeignKeyConstraint baseColumnNames="lingua_id" baseTableName="competenze_lng" constraintName="FK3ftf3pox4kcbd826low2ahcvc" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="lingua" validate="true"/>
+    </changeSet>
+    <changeSet author="mtassinari (generated)" id="1572556136344-16">
+        <addForeignKeyConstraint baseColumnNames="candidato_id" baseTableName="competenza" constraintName="FK4mlc594fah6n3fpw41wd5ttam" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="candidato" validate="true"/>
+    </changeSet>
+    <changeSet author="mtassinari (generated)" id="1572556136344-17">
+        <addForeignKeyConstraint baseColumnNames="candidato_id" baseTableName="curriculum" constraintName="FK5tgpyya8kihe58cdg4hrva1ix" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="candidato" validate="true"/>
+    </changeSet>
+    <changeSet author="mtassinari (generated)" id="1572556136344-18">
+        <addForeignKeyConstraint baseColumnNames="ambito_comp_id" baseTableName="competenza" constraintName="FK8yump7hylidg3iywfqto5v7hs" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="ambito_competenza" validate="true"/>
+    </changeSet>
+    <changeSet author="mtassinari (generated)" id="1572556136344-19">
+        <addForeignKeyConstraint baseColumnNames="ambito_id" baseTableName="ambito_competenza" constraintName="FKihte13yy2br82e9itt7x88jah" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="ambito_competenza" validate="true"/>
+    </changeSet>
+    <changeSet author="mtassinari (generated)" id="1572556136344-20">
+        <addForeignKeyConstraint baseColumnNames="candidato_id" baseTableName="titolo_studio" constraintName="FKir4wounr4cpget51uan2rq4on" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="candidato" validate="true"/>
+    </changeSet>
+    <changeSet author="mtassinari (generated)" id="1572556136344-21">
+        <addForeignKeyConstraint baseColumnNames="candidato_id" baseTableName="competenze_lng" constraintName="FKqdt1biccnmhtdjpwutt62pw4f" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="candidato" validate="true"/>
+    </changeSet>
+    <changeSet author="mtassinari (generated)" id="1572556136344-22">
+        <dropForeignKeyConstraint baseTableName="competenza_candidato" constraintName="fk_candidato_competenza_competenza_id"/>
+    </changeSet>
+    <changeSet author="mtassinari (generated)" id="1572556136344-23">
+        <dropForeignKeyConstraint baseTableName="competenza" constraintName="fk_competenza_ambito_id"/>
+    </changeSet>
+    <changeSet author="mtassinari (generated)" id="1572556136344-24">
+        <dropForeignKeyConstraint baseTableName="competenza_candidato" constraintName="fk_competenza_candidato_candidato_id"/>
+    </changeSet>
+    <changeSet author="mtassinari (generated)" id="1572556136344-25">
+        <dropTable tableName="ambito"/>
+    </changeSet>
+    <changeSet author="mtassinari (generated)" id="1572556136344-26">
+        <dropTable tableName="competenza_candidato"/>
+    </changeSet>
+    <changeSet author="mtassinari (generated)" id="1572556136344-27">
+        <dropColumn columnName="ambito_id" tableName="competenza"/>
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,49 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="titoloStudio">
+            <h2><span jhiTranslate="jemoloApplicationApp.titoloStudio.detail.title">Titolo Studio</span> {{titoloStudio.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="jemoloApplicationApp.titoloStudio.tipologia">Tipologia</span></dt>
+                <dd>
+                    <span>{{titoloStudio.tipologia}}</span>
+                </dd>
+                <dt><span jhiTranslate="jemoloApplicationApp.titoloStudio.descrizione">Descrizione</span></dt>
+                <dd>
+                    <span>{{titoloStudio.descrizione}}</span>
+                </dd>
+                <dt><span jhiTranslate="jemoloApplicationApp.titoloStudio.conseguimento">Conseguimento</span></dt>
+                <dd>
+                    <span>{{titoloStudio.conseguimento}}</span>
+                </dd>
+                <dt><span jhiTranslate="jemoloApplicationApp.titoloStudio.anno">Anno</span></dt>
+                <dd>
+                    <span>{{titoloStudio.anno}}</span>
+                </dd>
+                <dt><span jhiTranslate="jemoloApplicationApp.titoloStudio.voto">Voto</span></dt>
+                <dd>
+                    <span>{{titoloStudio.voto}}</span>
+                </dd>
+                <dt><span jhiTranslate="jemoloApplicationApp.titoloStudio.candidato">Candidato</span></dt>
+                <dd>
+                    <div *ngIf="titoloStudio.anagraficaId">
+                        <a [routerLink]="['/anagrafica-candidato', titoloStudio.anagraficaId, 'view']">{{titoloStudio.anagraficaId}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/titolo-studio', titoloStudio.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,30 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="allegato">
+            <h2><span jhiTranslate="jemoloApplicationApp.allegato.detail.title">Allegato</span> {{allegato.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="jemoloApplicationApp.allegato.data">Data</span></dt>
+                <dd>
+                    <div *ngIf="allegato.data">
+                        <a (click)="openFile(allegato.dataContentType, allegato.data)" jhiTranslate="entity.action.open">open</a>
+                        {{allegato.dataContentType}}, {{byteSize(allegato.data)}}
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/allegato', allegato.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

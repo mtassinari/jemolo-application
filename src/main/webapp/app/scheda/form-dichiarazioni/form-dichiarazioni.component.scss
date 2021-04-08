@@ -1,0 +1,25 @@
+// adds breaks to the mat-checkboxes with long labels
+::ng-deep .mat-checkbox-layout {
+    white-space: normal !important;
+}
+
+// rather than center the checkbox, put the checkbox in the first line
+::ng-deep .mat-checkbox-inner-container {
+    margin-top: 4px !important;
+	padding-top: 0px;
+}
+
+.dichiarazioni-obligatorie-section {
+	margin: 10px 22px;
+}
+
+.disclaimer-dichiarazioni-obligatorie {
+	font-weight: bold;
+	text-decoration: underline;
+}
+
+.dichiarazioni-obligatorie-all {
+	text-decoration: underline;
+	text-transform: uppercase;
+	font-weight: bold;
+}

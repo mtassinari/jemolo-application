@@ -1,0 +1,37 @@
+/* ==========================================================================
+Main page styles
+========================================================================== */
+@import '~@angular/material/theming';
+
+.hipster {
+  display: inline-block;
+  width: 347px;
+  height: 497px;
+  background: url('../../content/images/logo-jemolo.png') no-repeat center top;
+  background-size: contain;
+}
+
+/* wait autoprefixer update to allow simple generation of high pixel density media query */
+@media only screen and (-webkit-min-device-pixel-ratio: 2),
+  only screen and (-moz-min-device-pixel-ratio: 2),
+  only screen and (-o-min-device-pixel-ratio: 2/1),
+  only screen and (min-resolution: 192dpi),
+  only screen and (min-resolution: 2dppx) {
+  .hipster {
+    /*background: url('../../content/images/jhipster_family_member_0.svg') no-repeat center top;*/
+    background-size: contain;
+  }
+}
+.home-card {
+	text-align: center;
+	@include mat-elevation(0);
+}
+.mat-card-header { justify-content: center; }
+.mat-card-actions { text-align: center; }
+
+.testo-home {
+	text-align: left;
+}
+/* ==========================================================================
+Bootstrap examples
+========================================================================== */

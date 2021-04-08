@@ -1,0 +1,44 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+    <changeSet author="mtassinari (generated)" id="1573739554506-1">
+        <createTable tableName="allegato">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="allegatoPK"/>
+            </column>
+            <column name="data" type="OID"/>
+            <column name="data_content_type" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="mtassinari (generated)" id="1573739554506-2">
+        <addColumn tableName="curriculum">
+            <column name="allegato_id" type="int8"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="mtassinari (generated)" id="1573739554506-3">
+        <addColumn tableName="curriculum">
+            <column name="mime_type" type="varchar(255)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="mtassinari (generated)" id="1573739554506-4">
+        <addColumn tableName="curriculum">
+            <column name="size" type="int8">
+                <constraints nullable="false"/>
+            </column>
+        </addColumn>
+    </changeSet>
+    <changeSet author="mtassinari (generated)" id="1573739554506-5">
+        <addUniqueConstraint columnNames="allegato_id" constraintName="UC_CURRICULUMALLEGATO_ID_COL" tableName="curriculum"/>
+    </changeSet>
+    <changeSet author="mtassinari (generated)" id="1573739554506-6">
+        <addForeignKeyConstraint baseColumnNames="allegato_id" 
+        						baseTableName="curriculum" 
+								constraintName="fk_curriculum_allegato_id" 
+								deferrable="false" initiallyDeferred="false" 
+								referencedColumnNames="id" 
+								referencedTableName="allegato" 
+								validate="true"/>
+    </changeSet>
+    <changeSet author="mtassinari (generated)" id="1573739554506-7">
+        <dropSequence sequenceName="cv_sequence_generator"/>
+    </changeSet>
+</databaseChangeLog>

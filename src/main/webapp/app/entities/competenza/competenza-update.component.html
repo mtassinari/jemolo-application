@@ -1,0 +1,87 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-competenza-heading" jhiTranslate="jemoloApplicationApp.competenza.home.createOrEditLabel">Create or edit a Competenza</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!editForm.get('id').value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jemoloApplicationApp.competenza.descrizione" for="field_descrizione">Descrizione</label>
+                    <input type="text" class="form-control" name="descrizione" id="field_descrizione"
+                           formControlName="descrizione"/>
+                    <div *ngIf="editForm.get('descrizione').invalid && (editForm.get('descrizione').dirty || editForm.get('descrizione').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('descrizione').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jemoloApplicationApp.competenza.anniEsperianza" for="field_anniEsperianza">Anni Esperianza</label>
+                    <input type="number" class="form-control" name="anniEsperianza" id="field_anniEsperianza"
+                           formControlName="anniEsperianza"/>
+                    <div *ngIf="editForm.get('anniEsperianza').invalid && (editForm.get('anniEsperianza').dirty || editForm.get('anniEsperianza').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('anniEsperianza').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('anniEsperianza')?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jemoloApplicationApp.competenza.note" for="field_note">Note</label>
+                    <input type="text" class="form-control" name="note" id="field_note"
+                           formControlName="note"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jemoloApplicationApp.competenza.candidato" for="field_candidato">Candidato</label>
+                    <select class="form-control" id="field_anagrafica" name="anagrafica" formControlName="anagraficaId">
+                        <option *ngIf="!editForm.get('anagraficaId').value" [ngValue]="null" selected></option>
+                        <option [ngValue]="anagraficaCandidatoOption.id" *ngFor="let anagraficaCandidatoOption of anagraficacandidatoes; trackBy: trackAnagraficaCandidatoById">{{anagraficaCandidatoOption.id}}</option>
+                    </select>
+                </div>
+                <div *ngIf="editForm.get('anagraficaId').invalid && (editForm.get('anagraficaId').dirty || editForm.get('anagraficaId').touched)">
+                    <small class="form-text text-danger"
+                           *ngIf="editForm.get('anagraficaId').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                    </small>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jemoloApplicationApp.competenza.ambitoComp" for="field_ambitoComp">Ambito Comp</label>
+                    <select class="form-control" id="field_ambitoComp" name="ambitoComp" formControlName="ambitoCompId">
+                        <option *ngIf="!editForm.get('ambitoCompId').value" [ngValue]="null" selected></option>
+                        <ng-container *ngFor="let ambitoCompetenzaOption of ambitocompetenzas; trackBy: trackAmbitoCompetenzaById">
+	                        <ng-container *ngIf="ambitoCompetenzaOption.ambito">
+	                        <option [ngValue]="ambitoCompetenzaOption.id">
+	                        {{ambitoCompetenzaOption.ambito.descrizione}} - {{ambitoCompetenzaOption.descrizione}}
+	                        </option>
+	                        </ng-container>
+                        </ng-container>
+                    </select>
+                </div>
+                <div *ngIf="editForm.get('ambitoCompId').invalid && (editForm.get('ambitoCompId').dirty || editForm.get('ambitoCompId').touched)">
+                    <small class="form-text text-danger"
+                           *ngIf="editForm.get('ambitoCompId').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                    </small>
+                </div>
+
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

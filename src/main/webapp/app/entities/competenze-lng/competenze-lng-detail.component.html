@@ -1,0 +1,39 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="competenzeLng">
+            <h2><span jhiTranslate="jemoloRoosterApp.competenzeLng.detail.title">Competenze Lng</span> {{competenzeLng.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="jemoloRoosterApp.competenzeLng.livello">Livello</span></dt>
+                <dd>
+                    <span>{{competenzeLng.livello}}</span>
+                </dd>
+                <dt><span jhiTranslate="jemoloRoosterApp.competenzeLng.lingua">Lingua</span></dt>
+                <dd>
+                    <div *ngIf="competenzeLng.linguaId">
+                        <a [routerLink]="['/lingua', competenzeLng.linguaId, 'view']">{{competenzeLng.linguaId}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="jemoloRoosterApp.competenzeLng.candidato">Candidato</span></dt>
+                <dd>
+                    <div *ngIf="competenzeLng.anagraficaId">
+                        <a [routerLink]="['/anagrafica-candidato', competenzeLng.anagraficaId, 'view']">{{competenzeLng.anagraficaId}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/competenze-lng', competenzeLng.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

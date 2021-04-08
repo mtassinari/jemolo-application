@@ -1,0 +1,30 @@
+{
+    "name": "Ambito",
+    "fields": [
+        {
+            "fieldName": "descrizione",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "competenza",
+            "otherEntityRelationshipName": "ambito",
+            "relationshipName": "competenza"
+        }
+    ],
+    "changelogDate": "20190904092741",
+    "entityTableName": "ambito",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*",
+    "javadoc": "Entity Ambito\n@author Marco Tassinari"
+}

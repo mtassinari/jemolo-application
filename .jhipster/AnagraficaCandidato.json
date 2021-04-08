@@ -1,0 +1,193 @@
+{
+    "name": "AnagraficaCandidato",
+    "fields": [
+        {
+            "fieldName": "luogoNascita",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "dataNascita",
+            "fieldType": "LocalDate",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "professione",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "partitaIva",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "unique",
+                "pattern"
+            ],
+            "fieldValidateRulesPattern": "^[0-9]{11}$"
+        },
+        {
+            "fieldName": "datoreLavoro",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "indirizzoDatoreLavoro",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "numeroTelefonoFisso",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "numeroTelefonoCellulare",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "numeroTelefonoAltro",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "indirizzoPec",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "unique",
+                "pattern"
+            ],
+            "fieldValidateRulesPattern": "^[A-z0-9\\.\\+_-]+@[A-z0-9\\._-]+\\.[A-z]{2,6}$"
+        },
+        {
+            "fieldName": "cittadinoUnioneEuropea",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "indirizzoResidenza",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "capResidenza",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "comuneResidenza",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "provinciaResidenza",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "titoloStudio",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "titoloStudioTipologia",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "titoloStudioLuogo",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "titoloStudioAnno",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "titoloStudioVoto",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "specializzazioneUniversitaria",
+            "fieldType": "Boolean",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "iscrizioneAlboProfessionale",
+            "fieldType": "Boolean",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "operatoreAmbitoTecnicoProfessionale",
+            "fieldType": "Boolean",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "esperienzaBiennale",
+            "fieldType": "Boolean",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "cv",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "note",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "candidato",
+            "otherEntityRelationshipName": "anagraficaCandidato",
+            "relationshipValidateRules": "required",
+            "relationshipName": "candidato",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "useJPADerivedIdentifier": true
+        }
+    ],
+    "changelogDate": "20190904092739",
+    "entityTableName": "anagrafica_candidato",
+    "dto": "mapstruct",
+    "pagination": "pager",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*",
+    "javadoc": "Entity AnagraficaCandidato\n@author Marco Tassinari"
+}

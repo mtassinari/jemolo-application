@@ -1,0 +1,12 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+    <changeSet author="mtassinari (generated)" id="1569417644491-3">
+        <addUniqueConstraint columnNames="codice_fiscale" constraintName="UC_CANDIDATOCODICE_FISCALE_COL" tableName="candidato"/>
+    </changeSet>
+    <changeSet author="mtassinari (generated)" id="1569417644491-1">
+        <dropDefaultValue columnDataType="varchar(50)" columnName="created_by" tableName="candidato"/>
+    </changeSet>
+    <changeSet author="mtassinari (generated)" id="1569417644491-2">
+        <addNotNullConstraint columnDataType="bigint" columnName="stato_id" tableName="candidato"/>
+    </changeSet>
+</databaseChangeLog>

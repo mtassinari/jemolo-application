@@ -1,0 +1,109 @@
+<div class="overlay" *ngIf="isSaving">
+<div class="center">
+    <!-- <mat-progress-spinner diameter=50 
+	                      mode="indeterminate"
+						  color="accent">
+	</mat-progress-spinner> -->
+	<mat-spinner></mat-spinner>
+</div>
+</div>
+<div>
+    <h2 id="page-heading">
+        <span>Lista iscritti</span>
+        <!-- <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-candidato" [routerLink]="['/jemolouser/candidato/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="jemoloApplicationApp.candidato.home.createLabel">
+            Create a new Candidato
+            </span>
+        </button> -->
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="alert alert-warning" *ngIf="candidatoes?.length === 0">
+        <span>Non ci sono iscritti</span>
+    </div>
+    <div class="table-responsive" *ngIf="candidatoes?.length > 0">
+		<div style="padding-bottom: 10px;padding-top: 10px;">
+			<div class="row">
+				<div class="col-sm-12">
+	         	<button (click)="exportToExcel()" class="btn btn-success">Esporta in Excel</button> 
+				</div>
+			</div>
+		</div>
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="nominativo"><span jhiTranslate="jemoloApplicationApp.candidato.nominativo">Nominativo</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <!-- <th jhiSortBy="nome"><span jhiTranslate="jemoloApplicationApp.candidato.nome">Nome</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="cognome"><span jhiTranslate="jemoloApplicationApp.candidato.cognome">Cognome</span> <fa-icon [icon]="'sort'"></fa-icon></th> -->
+            <th>Id Scheda</th>
+            <th><span jhiTranslate="jemoloApplicationApp.candidato.codiceFiscale">Codice Fiscale</span><!--  <fa-icon [icon]="'sort'"></fa-icon> --></th>
+            <!-- <th *jhiHasAnyAuthority="'ROLE_SUPERADMIN'"></th> -->
+            <th>Stato</th>
+            <th><span jhiTranslate="jemoloApplicationApp.candidato.email">Email</span><!--  <fa-icon [icon]="'sort'"></fa-icon> --></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let candidato of candidatoes ;trackBy: trackId">
+                <!-- <td><a [routerLink]="['/candidato', candidato.id, 'view' ]">{{candidato.id}}</a></td> -->
+                <td><a [routerLink]="['/jemolouser/candidato', candidato.id, 'view' ]">{{candidato.id}}</a></td>
+                <td>{{candidato.nominativo}}</td>
+                <!-- <td>{{candidato.nome}}</td>
+                <td>{{candidato.cognome}}</td> -->
+                <td>{{candidato.anagraficaCandidatoId}}</td>
+                <td>{{candidato.codiceFiscale}}</td>
+                <td *jhiHasAnyAuthority="'ROLE_ADMIN'">
+                    <!-- <button class="btn btn-danger btn-sm" (click)="setActive(candidato, true)" *ngIf="!candidato.activated"
+                            jhiTranslate="userManagement.deactivated">Deactivated</button>-->
+                    <button class="btn btn-danger btn-sm" (click)="setActive(candidato, true, 1)" *ngIf="!candidato.activated && candidato.statoRegistrazioneId === 0">Registrato non attivo({{candidato.statoRegistrazioneId}})</button>
+                    <button class="btn btn-danger btn-sm" (click)="setActive(candidato, true, 1)" *ngIf="!candidato.activated && candidato.statoRegistrazioneId === 2">Disattivato({{candidato.statoRegistrazioneId}})</button>
+                    <button class="btn btn-danger btn-sm" (click)="setActive(candidato, true, 1)" *ngIf="!candidato.activated && candidato.statoRegistrazioneId === 3">Cancellato da utente!({{candidato.statoRegistrazioneId}})</button>
+                    <!--<button class="btn btn-success btn-sm" (click)="setActive(candidato, false)" *ngIf="candidato.activated"
+                            jhiTranslate="userManagement.activated">Activated</button>-->
+                    <button class="btn btn-success btn-sm" (click)="setActive(candidato, false, 2)" *ngIf="candidato.activated">Attivato</button>
+                </td>
+                <!--<td *ngIf="candidato.activated">Attivo</td>
+                <td *ngIf="!candidato.activated && candidato.statoRegistrazioneId === 0">Registrato non ancora attivo</td>
+                <td *ngIf="!candidato.activated && candidato.statoRegistrazioneId === 2">Disattivato</td>
+                <td *ngIf="!candidato.activated && candidato.statoRegistrazioneId === 3">Cancellato</td>-->
+                <td>{{candidato.email}}</td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/jemolouser/candidato', candidato.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/jemolouser/candidato', candidato.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <!-- <button type="submit"
+                                [routerLink]="['/jemolouser/candidato', { outlets: { popup: candidato.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button> -->
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <!-- Pager is not implemented yet, so this is normal pagination instead -->
+    <div [hidden]="candidatoes?.length === 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

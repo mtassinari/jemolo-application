@@ -1,0 +1,27 @@
+{
+  "jemoloApplicationApp": {
+    "titoloStudio": {
+      "home": {
+        "title": "Titoli di studio",
+        "createLabel": "Aggiungi un titolo di studio",
+        "createOrEditLabel": "Aggiungi o modifica un titolo di studio",
+        "notFound": "Non sono stati trovati titoli di studio"
+      },
+      "created": "&Egrave; stato generato un nuovo Titolo Studio con identificatore {{ param }}",
+      "updated": "&Egrave; stato aggiornato Titolo Studio identificato da {{ param }}",
+      "deleted": "&Egrave; stato eliminato Titolo Studio con identificatore {{ param }}",
+      "delete": {
+        "question": "Sei sicuro di volere eliminare Titolo Studio {{ id }}?"
+      },
+      "detail": {
+        "title": "Titolo Studio"
+      },
+      "tipologia": "Tipologia",
+      "descrizione": "Descrizione",
+      "conseguimento": "Conseguimento",
+      "anno": "Anno",
+      "voto": "Voto",
+      "candidato": "Candidato"
+    }
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "jemoloApplicationApp": {
+    "avvisiHome": {
+      "home": {
+        "title": "Avvisi",
+        "createLabel": "Nuovo avviso",
+        "createOrEditLabel": "Crea o modifica un avviso",
+        "notFound": "Non ci sono avvisi salvati"
+      },
+      "created": "&Egrave; stato creato un nuovo avviso con id {{ param }}",
+      "updated": "&Egrave; aggiornato avviso id {{ param }}",
+      "deleted": "&Egrave; eliminato avviso id {{ param }}",
+      "delete": {
+        "question": "Sei sicuro di volere eliminare l'avviso id {{ id }}?"
+      },
+      "detail": {
+        "title": "Avvisi Home"
+      },
+      "titolo": "Titolo avviso",
+      "avvisoHome": "Testo avviso",
+      "visibile": "Visibile"
+    }
+  }
+}

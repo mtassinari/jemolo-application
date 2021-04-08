@@ -1,0 +1,108 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+    <changeSet author="mtassinari (generated)" id="1574083675163-1">
+        <addColumn tableName="competenza">
+            <column name="anagrafica_id" type="int8">
+                <constraints nullable="false"/>
+            </column>
+        </addColumn>
+    </changeSet>
+    <changeSet author="mtassinari (generated)" id="1574083675163-2">
+        <addColumn tableName="competenze_lng">
+            <column name="anagrafica_id" type="int8">
+                <constraints nullable="false"/>
+            </column>
+        </addColumn>
+    </changeSet>
+    <changeSet author="mtassinari (generated)" id="1574083675163-3">
+        <addColumn tableName="curriculum">
+            <column name="anagrafica_id" type="int8">
+                <constraints nullable="false"/>
+            </column>
+        </addColumn>
+    </changeSet>
+    <changeSet author="mtassinari (generated)" id="1574083675163-4">
+        <addColumn tableName="titolo_studio">
+            <column name="anagrafica_id" type="int8">
+                <constraints nullable="false"/>
+            </column>
+        </addColumn>
+    </changeSet>
+    <changeSet author="mtassinari (generated)" id="1574083675163-5">
+        <addColumn tableName="anagrafica_candidato">
+            <column name="cognome" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+        </addColumn>
+    </changeSet>
+    <changeSet author="mtassinari (generated)" id="1574083675163-6">
+        <addColumn tableName="anagrafica_candidato">
+            <column name="nome" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+        </addColumn>
+    </changeSet>
+    <changeSet author="mtassinari (generated)" id="1574083675163-7">
+        <addForeignKeyConstraint baseColumnNames="anagrafica_id" 
+        						baseTableName="titolo_studio" 
+        						constraintName="fk_titolo_studio_anagrafica_id" 
+        						deferrable="false" initiallyDeferred="false" 
+        						referencedColumnNames="id" 
+        						referencedTableName="anagrafica_candidato" 
+        						validate="true"/>
+    </changeSet>
+    <changeSet author="mtassinari (generated)" id="1574083675163-8">
+        <addForeignKeyConstraint baseColumnNames="anagrafica_id" 
+        						baseTableName="competenze_lng" 
+        						constraintName="fk_competenze_lng_anagrafica_id" 
+        						deferrable="false" 
+        						initiallyDeferred="false" 
+        						referencedColumnNames="id" 
+        						referencedTableName="anagrafica_candidato" 
+        						validate="true"/>
+    </changeSet>
+    <changeSet author="mtassinari (generated)" id="1574083675163-9">
+        <addForeignKeyConstraint baseColumnNames="anagrafica_id" 
+        						baseTableName="curriculum" 
+        						constraintName="fk_curriculum_anagrafica_id" 
+        						deferrable="false" 
+        						initiallyDeferred="false" 
+        						referencedColumnNames="id" 
+        						referencedTableName="anagrafica_candidato" 
+        						validate="true"/>
+    </changeSet>
+    <changeSet author="mtassinari (generated)" id="1574083675163-10">
+        <addForeignKeyConstraint baseColumnNames="anagrafica_id" 
+        						baseTableName="competenza" 
+        						constraintName="fk_competenza_anagrafica_id" 
+        						deferrable="false" 
+        						initiallyDeferred="false" 
+        						referencedColumnNames="id" 
+        						referencedTableName="anagrafica_candidato" 
+        						validate="true"/>
+    </changeSet>
+    <changeSet author="mtassinari (generated)" id="1574083675163-11">
+        <dropForeignKeyConstraint baseTableName="competenza" constraintName="fk_competenza_candidato_id"/>
+    </changeSet>
+    <changeSet author="mtassinari (generated)" id="1574083675163-12">
+        <dropForeignKeyConstraint baseTableName="competenze_lng" constraintName="fk_competenze_lng_candidato_id"/>
+    </changeSet>
+    <changeSet author="mtassinari (generated)" id="1574083675163-13">
+        <dropForeignKeyConstraint baseTableName="curriculum" constraintName="fk_curriculum_candidato_id"/>
+    </changeSet>
+    <changeSet author="mtassinari (generated)" id="1574083675163-14">
+        <dropForeignKeyConstraint baseTableName="titolo_studio" constraintName="fk_titolo_studio_candidato_id"/>
+    </changeSet>
+    <changeSet author="mtassinari (generated)" id="1574083675163-15">
+        <dropColumn columnName="candidato_id" tableName="competenza"/>
+    </changeSet>
+    <changeSet author="mtassinari (generated)" id="1574083675163-16">
+        <dropColumn columnName="candidato_id" tableName="competenze_lng"/>
+    </changeSet>
+    <changeSet author="mtassinari (generated)" id="1574083675163-17">
+        <dropColumn columnName="candidato_id" tableName="curriculum"/>
+    </changeSet>
+    <changeSet author="mtassinari (generated)" id="1574083675163-18">
+        <dropColumn columnName="candidato_id" tableName="titolo_studio"/>
+    </changeSet>
+</databaseChangeLog>

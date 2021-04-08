@@ -1,0 +1,26 @@
+{
+  "register": {
+    "title": "Registrazione",
+    "form": {
+      "button": "Crea Account"
+    },
+    "messages": {
+      "validate": {
+        "login": {
+          "required": "Il nome utente è obbligatorio.",
+          "minlength": "Il nome utente deve essere di almeno 1 carattere",
+          "maxlength": "Il nome utente non può contenere più di 50 caratteri",
+          "pattern": "Il nome utente può contenere solo lettere minuscole e cifre."
+        }
+      },
+      "success": "<strong>La registrazione dell&#8217;account è avvenuta correttamente, </strong>ti e&#768; stata inviata una email all'indirizzo che hai inserito in fase di registrazione con le istruzioni per confermare e attivare il tuo account.",
+      "error": {
+        "fail": "<strong>La registrazione dell'account è fallita!</strong> Riprova più tardi.",
+        "userexists": "<strong>Il nome utente scelto è già registrato!</strong> Si prega di scegliere un altro nome utente.",
+        "emailexists": "<strong>L'indirizzo email è già in uso</strong> Si prega di sceglierne un altro.",
+        "loginexists": "<strong>L'indirizzo email scelto come login è già in uso</strong> Si prega di sceglierne un altro.",
+        "cfexists": "<strong>Registrazione gi&#224; effettuata con questo codice fiscale</strong>, se si dispone di una utenza effettuare la login"
+      }
+    }
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "jemoloApplicationApp": {
+    "formScheda": {
+      "CreateLabel": "Inserisci anagrafica",
+      "EditLabel": "Modifica anagrafica",
+      "EditOrCreateLabel": "Compila o midifica la tua scheda",
+      "home": {
+        "title": "Scheda iscritti",
+        "createLabel": "Compila la scheda",
+        "createOrEditLabel": "Genera o modifica un Anagrafica Candidato",
+        "notFound": "Non sono presenti anagrafiche"
+      },
+      "created": "&Egrave; stato generato un nuovo Anagrafica Candidato con identificatore {{ param }}",
+      "updated": "&Egrave; stato aggiornato Anagrafica Candidato identificato da {{ param }}",
+      "deleted": "&Egrave; stato eliminato Anagrafica Candidato con identificatore {{ param }}",
+      "delete": {
+        "question": "Sei sicuro di volere eliminare Anagrafica Candidato {{ id }}?"
+      },
+      "detail": {
+        "title": "Anagrafica Candidato"
+      },
+      "own-detail": {
+        "title": "Anagrafica"
+      },
+      "nome": "nome",
+      "cognome": "cognome",
+      "luogoNascita": "Luogo Nascita",
+      "dataNascita": "Data Nascita",
+      "professione": "Professione",
+      "partitaIva": "Partita Iva",
+      "numeroTelefonoFisso": "Numero Telefono Fisso",
+      "numeroTelefonoCellulare": "Numero Telefono Cellulare",
+      "eMail": "Indirizzo email",
+      "indirizzoPec": "Indirizzo Pec",
+      "indirizzoResidenza": "Indirizzo Residenza",
+      "capResidenza": "Cap Residenza",
+      "comuneResidenza": "Comune Residenza",
+      "provinciaResidenza": "Provincia Residenza",
+      "note": "Note",
+      "candidato": "Candidato"
+    }
+  }
+}

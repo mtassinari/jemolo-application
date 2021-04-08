@@ -1,0 +1,50 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="competenza">
+            <h2><span jhiTranslate="jemoloApplicationApp.competenza.detail.title">Competenza</span> {{competenza.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="jemoloApplicationApp.competenza.descrizione">Descrizione</span></dt>
+                <dd>
+                    <span>{{competenza.descrizione}}</span>
+                </dd>
+                <dt><span jhiTranslate="jemoloApplicationApp.competenza.anniEsperianza">Anni Esperianza</span></dt>
+                <dd>
+                    <span>{{competenza.anniEsperianza}}</span>
+                </dd>
+                <dt><span jhiTranslate="jemoloApplicationApp.competenza.note">Note</span></dt>
+                <dd>
+                    <span>{{competenza.note}}</span>
+                </dd>
+                <dt><span jhiTranslate="jemoloApplicationApp.competenza.candidato">Candidato</span></dt>
+                <dd>
+                    <div *ngIf="competenza.anagraficaId">
+                        <a [routerLink]="['/anagrafica-candidato', competenza.anagraficaId, 'view']">
+                        {{competenza.anagrafica.nome}} {{competenza.anagrafica.cognome}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="jemoloApplicationApp.competenza.ambitoComp">Ambito Competenza</span></dt>
+                <dd>
+                    <div *ngIf="competenza.ambitoCompId">
+                    	<span>{{competenza.ambitoComp.ambito.descrizione}}</span>: 
+                        <a [routerLink]="['/ambito-competenza', competenza.ambitoCompId, 'view']">
+                         {{competenza.ambitoComp.descrizione}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/competenza', competenza.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

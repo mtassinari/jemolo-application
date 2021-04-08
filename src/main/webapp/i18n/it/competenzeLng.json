@@ -1,0 +1,24 @@
+{
+  "jemoloRoosterApp": {
+    "competenzeLng": {
+      "home": {
+        "title": "Competenze linguistiche",
+        "createLabel": "Aggiungi lingua",
+        "createOrEditLabel": "Aggiungi o modifica una competenza linguistica",
+        "notFound": "Nessuna competenza linguistica trovata"
+      },
+      "created": "&Egrave; stata aggiunta una nuova lingua id: {{ param }}",
+      "updated": "&Egrave; stata aggiornato la lingua id: {{ param }}",
+      "deleted": "&Egrave; stata eliminata la lingua id: {{ param }}",
+      "delete": {
+        "question": "Sei sicuro di volere la lingua id: {{ id }}?"
+      },
+      "detail": {
+        "title": "Competenze linguistiche"
+      },
+      "livello": "Livello",
+      "lingua": "Lingua",
+      "candidato": "Candidato"
+    }
+  }
+}

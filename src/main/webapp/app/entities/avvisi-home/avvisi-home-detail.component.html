@@ -1,0 +1,38 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="avvisiHome">
+            <h2><span jhiTranslate="jemoloApplicationApp.avvisiHome.detail.title">Avvisi Home</span> {{ avvisiHome.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="jemoloApplicationApp.avvisiHome.titolo">Titolo</span></dt>
+                <dd>
+                    <span>{{ avvisiHome.titolo }}</span>
+                </dd>
+                <dt><span jhiTranslate="jemoloApplicationApp.avvisiHome.avvisoHome">Avviso Home</span></dt>
+                <dd>
+                    <span>{{ avvisiHome.avvisoHome }}</span>
+                </dd>
+                <dt><span jhiTranslate="jemoloApplicationApp.avvisiHome.visibile">Visibile</span></dt>
+                <dd>
+                    <span>{{ avvisiHome.visibile }}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/jemolouser/avvisi-home', avvisiHome.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

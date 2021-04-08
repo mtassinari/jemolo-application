@@ -1,0 +1,26 @@
+{
+  "jemoloApplicationApp": {
+    "competenza": {
+      "home": {
+        "title": "Competenze iscritti",
+        "createLabel": "Genera una nuova competenza",
+        "createOrEditLabel": "Genera o modifica una competenza",
+        "notFound": "Nessuna competenza trovata"
+      },
+      "created": "&Egrave; stato generato una nuova competenza con id: {{ param }}",
+      "updated": "&Egrave; stato aggiornata la competenza con id: {{ param }}",
+      "deleted": "&Egrave; stato eliminato la competenza con id: {{ param }}",
+      "delete": {
+        "question": "Sei sicuro di volere eliminare la competenza con id: {{ id }}?"
+      },
+      "detail": {
+        "title": "Competenza"
+      },
+      "descrizione": "Descrizione",
+      "anniEsperianza": "Anni Esperianza",
+      "note": "Note",
+      "candidato": "Candidato",
+      "ambitoComp": "Ambito Competenza"
+    }
+  }
+}

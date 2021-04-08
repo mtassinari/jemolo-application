@@ -1,0 +1,68 @@
+ <div class="row">
+     <div class="alert alert-danger" *ngIf="authenticationError" jhiTranslate="login.messages.error.authentication">
+         <strong>Failed to sign in!</strong> Please check your credentials and try again.
+     </div>
+ </div>
+ 
+<!-- div class="login-form-flex">
+  <mat-card>
+	  <mat-card-header>
+	    <mat-card-title jhiTranslate="home-candidato.title" class = "mat-card-header">Login</mat-card-title>
+	    <mat-card-subtitle>Login candidato</mat-card-subtitle>
+	  </mat-card-header>
+    <mat-card-content>
+    <form autocomplete="off" novalidate [formGroup]="loginForm">
+      <mat-form-field class="form-group">
+        <input matInput placeholder="User Name" formControlName="username" id="field_username" name="username" [errorStateMatcher]="matcher" required>
+      </mat-form-field>
+      <br/>
+      <mat-form-field class="form-group">
+        <input type="password" matInput placeholder="Password" formControlName="password" type="password" id="password" [errorStateMatcher]="matcher" name="password" required />
+      </mat-form-field>
+    </form>
+    </mat-card-content>
+    <mat-card-actions>
+      <div class="button-flex-container">
+        <button mat-raised-button (click)="login()" color="primary">Login</button>
+        <button mat-raised-button (click)="requestResetPassword()" color="primary">Recupero password</button>
+      </div>
+    </mat-card-actions>
+  </mat-card>
+</div-->
+<div class="row h-100 justify-content-center align-items-center">
+    <div class="col-10 col-md-8 col-lg-6">
+	<mat-card class="login-card">
+	  <mat-card-header>
+	    <mat-card-title jhiTranslate="home-candidato.title" class = "mat-card-header">Login</mat-card-title>
+	    <mat-card-subtitle>Login candidato</mat-card-subtitle>
+	  </mat-card-header>
+	  <mat-card-content>
+	    <form autocomplete="off" novalidate [formGroup]="loginForm">				
+	      <mat-form-field class="form-group">
+	        <input matInput placeholder="Username" formControlName="username" id="field_username" name="username" [errorStateMatcher]="matcher" required>
+			<mat-error *ngIf="loginForm.controls['username'].hasError('required')">
+				<span jhiTranslate="entity.validation.required">Username obligatoria/span>
+			</mat-error>
+			<mat-hint>la propria utenza</mat-hint>	              
+	      </mat-form-field><br />
+	
+	      <mat-form-field class="form-group">
+	        <input matInput placeholder="Password" formControlName="password" type="password" id="password" [errorStateMatcher]="matcher" name="password" required>
+			<mat-error *ngIf="loginForm.controls['password'].hasError('required')">
+				<span jhiTranslate="entity.validation.required">Password obligaotoria</span>
+			</mat-error>
+			<mat-hint>la propria password</mat-hint>	              
+	      </mat-form-field><br />
+	    </form>
+	  </mat-card-content>
+	  <mat-card-actions>
+	    <button mat-raised-button (click)="login()" color="primary" jhiTranslate="login.form.button" style="margin-right:15px;">Login</button>
+	    <!-- <button mat-raised-button (click)="register()" color="primary" style="margin-right:15px;">Registrati</button> -->
+	    <button mat-raised-button (click)="requestResetPassword()" color="primary" style="margin-right:15px;">Recupero password</button>
+	  </mat-card-actions>
+	</mat-card>
+     <!-- <div class="alert alert-warning">
+        <a class="alert-link" (click)="requestResetPassword()" jhiTranslate="login.password.forgot"></a>
+     </div> -->	
+	</div>
+</div>           

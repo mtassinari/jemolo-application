@@ -1,0 +1,89 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="anagraficaCandidato">
+            <h2><span jhiTranslate="jemoloApplicationApp.anagraficaCandidato.own-detail.title">Anagrafica</span> {{anagraficaCandidato.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="jemoloApplicationApp.candidato.nome">Nome</span></dt>
+                <dd>
+                    <span>{{anagraficaCandidato.nome}}</span>
+                </dd>
+                <dt><span jhiTranslate="jemoloApplicationApp.candidato.cognome">Cognome</span></dt>
+                <dd>
+                    <span>{{anagraficaCandidato.cognome}}</span>
+                </dd>
+                <dt><span jhiTranslate="jemoloApplicationApp.anagraficaCandidato.luogoNascita">Luogo Nascita</span></dt>
+                <dd>
+                    <span>{{anagraficaCandidato.luogoNascita}}</span>
+                </dd>
+                <dt><span jhiTranslate="jemoloApplicationApp.anagraficaCandidato.dataNascita">Data Nascita</span></dt>
+                <dd>
+                    <span>{{anagraficaCandidato.dataNascita}}</span>
+                </dd>
+                <dt><span jhiTranslate="jemoloApplicationApp.anagraficaCandidato.professione">Professione</span></dt>
+                <dd>
+                    <span>{{anagraficaCandidato.professione}}</span>
+                </dd>
+                <dt><span jhiTranslate="jemoloApplicationApp.anagraficaCandidato.partitaIva">Partita Iva</span></dt>
+                <dd>
+                    <span>{{anagraficaCandidato.partitaIva}}</span>
+                </dd>
+                <dt><span jhiTranslate="jemoloApplicationApp.anagraficaCandidato.numeroTelefonoFisso">Numero Telefono Fisso</span></dt>
+                <dd>
+                    <span>{{anagraficaCandidato.numeroTelefonoFisso}}</span>
+                </dd>
+                <dt><span jhiTranslate="jemoloApplicationApp.anagraficaCandidato.numeroTelefonoCellulare">Numero Telefono Cellulare</span></dt>
+                <dd>
+                    <span>{{anagraficaCandidato.numeroTelefonoCellulare}}</span>
+                </dd>
+                <dt><span jhiTranslate="jemoloApplicationApp.anagraficaCandidato.eMail">E Mail</span></dt>
+                <dd>
+                    <span>{{anagraficaCandidato.candidato.email}}</span>
+                </dd>
+                <dt><span jhiTranslate="jemoloApplicationApp.anagraficaCandidato.indirizzoPec">Indirizzo Pec</span></dt>
+                <dd>
+                    <span>{{anagraficaCandidato.indirizzoPec}}</span>
+                </dd>
+                <dt><span jhiTranslate="jemoloApplicationApp.anagraficaCandidato.indirizzoResidenza">Indirizzo Residenza</span></dt>
+                <dd>
+                    <span>{{anagraficaCandidato.indirizzoResidenza}}</span>
+                </dd>
+                <dt><span jhiTranslate="jemoloApplicationApp.anagraficaCandidato.capResidenza">Cap Residenza</span></dt>
+                <dd>
+                    <span>{{anagraficaCandidato.capResidenza}}</span>
+                </dd>
+                <dt><span jhiTranslate="jemoloApplicationApp.anagraficaCandidato.comuneResidenza">Comune Residenza</span></dt>
+                <dd>
+                    <span>{{anagraficaCandidato.comuneResidenza}}</span>
+                </dd>
+                <dt><span jhiTranslate="jemoloApplicationApp.anagraficaCandidato.provinciaResidenza">Provincia Residenza</span></dt>
+                <dd>
+                    <span>{{anagraficaCandidato.provinciaResidenza}}</span>
+                </dd>
+                <dt><span jhiTranslate="jemoloApplicationApp.anagraficaCandidato.note">Note</span></dt>
+                <dd>
+                    <span>{{anagraficaCandidato.note}}</span>
+                </dd>
+                <dt><span jhiTranslate="jemoloApplicationApp.anagraficaCandidato.candidato">Candidato</span></dt>
+                <dd>
+                    <div *ngIf="anagraficaCandidato.candidatoId">
+                        <a [routerLink]="['/candidato', anagraficaCandidato.candidatoId, 'own-view']">{{anagraficaCandidato.candidatoId}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/anagrafica-candidato', anagraficaCandidato.id, 'own-edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

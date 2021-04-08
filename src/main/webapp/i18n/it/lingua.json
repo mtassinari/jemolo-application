@@ -1,0 +1,24 @@
+{
+  "jemoloApplicationApp": {
+    "lingua": {
+      "home": {
+        "title": "Lingue",
+        "createLabel": "Aggiungi una nuova lingua",
+        "createOrEditLabel": "Aggiungi o modifica una lingua",
+        "notFound": "Non ci sono lingue"
+      },
+      "created": "&Egrave; stata aggiunta lingua id: {{ param }}",
+      "updated": "&Egrave; stata modificata lingua id:  {{ param }}",
+      "deleted": "&Egrave; stata eliminata lingua id: {{ param }}",
+      "delete": {
+        "question": "Eliminare la lingua con id: {{ id }}?"
+      },
+      "detail": {
+        "title": "Lingua"
+      },
+      "lingua": "Lingua",
+      "linguaUe": "Lingua Ue",
+      "competenzeLinguistiche": "Competenze Linguistiche"
+    }
+  }
+}

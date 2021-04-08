@@ -1,0 +1,27 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+    <changeSet author="mtassinari (generated)" id="1571309343209-8">
+        <createTable tableName="jhi_persistent_candidato_token">
+            <column name="series" type="VARCHAR(255)">
+                <constraints primaryKey="true" primaryKeyName="jhi_persistent_candidato_tokenPK"/>
+            </column>
+            <column name="ip_address" type="VARCHAR(39)"/>
+            <column name="token_date" type="date"/>
+            <column name="token_value" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="user_agent" type="VARCHAR(255)"/>
+            <column name="candidato_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="mtassinari (generated)" id="1571309343209-9">
+        <addForeignKeyConstraint baseColumnNames="candidato_id" 
+								 baseTableName="jhi_persistent_candidato_token" 
+								 constraintName="fk_candidato_persistent_token" 
+								 deferrable="false" 
+								 initiallyDeferred="false" 
+								 referencedColumnNames="id" 
+								 referencedTableName="candidato" 
+								 validate="true"/>
+    </changeSet>
+</databaseChangeLog>

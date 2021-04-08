@@ -1,0 +1,64 @@
+<div class="form-group">
+	<span>Gent.le utente,</span><br>
+	con la presente si segnala che il CV deve essere inserito in formato europeo e deve essere sottoscritto con firma autografa.
+	Si segnala inoltre, che il costante aggiornamento dello stesso e&#768; necessario affinche&#769; l&#8217;Amministrazione regionale e gli Enti ad essa collegati possano valutare correttamente l&#8217;esperienza lavorativa maturata; il mancato aggiornamento del CV potrebbe infatti non consentire una esatta valutazione.
+</div>
+<div [formGroup]="cv" autocomplete="off" novalidate>
+	<!-- <div *ngIf="cv.get('cv').value" class="form-group">
+		<div>CV allegato: {{cv.get('cv').value}} ({{formatBytes(cv.controls['size'].value)}})</div>
+		<div>Data inserimento: {{cv.get('createdDate').value | date: 'medium'}}</div>
+		<div>Data ultimo aggiornamento: {{cv.get('lastModifiedDate').value | date: 'medium'}}</div>
+	</div> -->
+	<mat-list *ngIf="cv.get('cv').value">
+	  <h3 mat-subheader><i class="material-icons">attachment</i>Allegato</h3>
+	  <mat-list-item>
+	    <mat-icon matListIcon>save_alt</mat-icon>
+	    <h4 mat-line><a (click)="downloadCv()">{{cv.get('cv').value}}</a></h4>
+	    <p mat-line><span> ({{formatBytes(cv.controls['size'].value)}}) </span></p>
+	  </mat-list-item>
+	  <mat-divider></mat-divider>
+	  <mat-list-item>
+	    <mat-icon matListIcon>date_range</mat-icon>
+	    <h4 mat-line>Data inserimento</h4>
+	    <p mat-line>{{cv.get('createdDate').value | date: 'medium'}}</p>
+	  </mat-list-item>
+	  <mat-divider></mat-divider>
+	  <mat-list-item>
+	    <mat-icon matListIcon>update</mat-icon>
+	    <h4 mat-line>Data ultimo aggiornamento</h4>
+	    <p mat-line>{{cv.get('lastModifiedDate').value | date: 'medium'}}</p>
+	  </mat-list-item>
+	  <mat-divider></mat-divider>
+	</mat-list>
+	<br/>
+	<div class="form-row">
+		<div class="col-md-6">
+		<div>
+		  <!-- <div class="input-group-prepend">
+		    <button mat-stroked-button color="primary" (click)="fileInput.click()"><i class="material-icons">cloud_upload</i> Aggiorna il cv</button>
+		  </div>
+		  <div class="custom-file"> -->
+		  	<!-- <input type="file" formControlName="file" #fileInput class="custom-file-input" id="inputGroupFile03" aria-describedby="inputGroupFileAddon03"> -->
+		    <!-- <input type="file" formControlName="file" jhiFile (change)="handleFileInput($event.target.files)" #fileInput class="custom-file-input" id="inputGroupFile03" aria-describedby="inputGroupFileAddon03"> -->
+		    <jhi-file-upload formControlName="file" [cv]="cv"></jhi-file-upload>
+		    <!-- <label for="inputGroupFile03">{{file ? file.name : 'nessun file selezionato' }}{{file ? '('+formatBytes(file.size)+')' : '' }}</label> -->
+		  <!-- </div> -->
+		</div>
+        <!-- CV_STATUS: {{cv.get('file').status}}
+        CV_SIZE: {{cv.get('file').errors?.size}}
+        CV_REQUIRED: {{cv.get('file').errors?.required}}
+        CV_TYPE: {{cv.get('file').errors?.type}} -->
+		<div *ngIf="cv.get('file').invalid && (cv.get('file').dirty || cv.get('file').touched)">
+			<small class="form-text text-danger" *ngIf="cv.get('file').errors.required">
+			Manca il CV allegato
+			</small>
+			<small class="form-text text-danger" *ngIf="cv.get('file').errors.size">
+			Il file eccede le dimensioni massime (3MB)
+			</small>
+			<small class="form-text text-danger" *ngIf="cv.get('file').errors.type">
+			Il file allegato non rispetta il formato consentito (PDF)
+			</small>
+		</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,36 @@
+{
+  "jemoloApplicationApp": {
+    "anagraficaCandidato": {
+      "home": {
+        "title": "Anagrafica Candidatoes",
+        "createLabel": "Create a new Anagrafica Candidato",
+        "createOrEditLabel": "Create or edit a Anagrafica Candidato",
+        "notFound": "No Anagrafica Candidatoes found"
+      },
+      "created": "A new Anagrafica Candidato is created with identifier {{ param }}",
+      "updated": "A Anagrafica Candidato is updated with identifier {{ param }}",
+      "deleted": "A Anagrafica Candidato is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Anagrafica Candidato {{ id }}?"
+      },
+      "detail": {
+        "title": "Anagrafica Candidato"
+      },
+      "nome": "Nome",
+      "cognome": "Cognome",
+      "luogoNascita": "Luogo Nascita",
+      "dataNascita": "Data Nascita (DD/MM/YYYY)",
+      "professione": "Professione",
+      "partitaIva": "Partita Iva",
+      "numeroTelefonoFisso": "Numero Telefono Fisso",
+      "numeroTelefonoCellulare": "Numero Telefono Cellulare",
+      "indirizzoPec": "Indirizzo Pec",
+      "indirizzoResidenza": "Indirizzo Residenza",
+      "capResidenza": "Cap Residenza",
+      "comuneResidenza": "Comune Residenza",
+      "provinciaResidenza": "Provincia Residenza",
+      "note": "Note",
+      "candidato": "Candidato"
+    }
+  }
+}

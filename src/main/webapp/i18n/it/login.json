@@ -1,0 +1,20 @@
+{
+  "login": {
+    "title": "Accedi",
+    "candidatotitle": "Login iscritto",
+    "form": {
+      "password": "Password",
+      "password.placeholder": "La tua password",
+      "rememberme": "Ricordami",
+      "button": "Accedi"
+    },
+    "messages": {
+      "error": {
+        "authentication": "<strong>Accesso non riuscito!</strong> Si prega di controllare le credenziali e riprovare."
+      }
+    },
+    "password": {
+      "forgot": "Password dimenticata?"
+    }
+  }
+}

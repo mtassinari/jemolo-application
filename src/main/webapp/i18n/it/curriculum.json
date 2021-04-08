@@ -1,0 +1,28 @@
+{
+  "jemoloApplicationApp": {
+    "curriculum": {
+      "home": {
+        "title": "Curricula iscritti",
+        "createLabel": "Crea un nuovo cv",
+        "createOrEditLabel": "Crea o modifica un cv",
+        "notFound": "Nessun Curricula trovato"
+      },
+      "created": "&Egrave; stato generato un nuovo Curriculum con identificatore {{ param }}",
+      "updated": "&Egrave; stato aggiornato Curriculum identificato da {{ param }}",
+      "deleted": "&Egrave; stato eliminato Curriculum con identificatore {{ param }}",
+      "delete": {
+        "question": "Sei sicuro di volere eliminare Curriculum {{ id }}?"
+      },
+      "detail": {
+        "title": "Curriculum"
+      },
+      "cv": "Cv",
+      "note": "Note",
+      "candidato": "Candidato",
+ 	  "attach": "allegato",
+ 	  "urlAllegato": "url allegato",
+ 	  "size": "Dimensioni file allegato",
+ 	  "mimeType": "Tipo allegato"
+    }
+  }
+}

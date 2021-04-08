@@ -1,0 +1,155 @@
+<div>
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <h1 jhiTranslate="jemoloApplicationApp.candidato.registrazione">Registration</h1>
+  			<mat-divider></mat-divider>
+            <div class="alert alert-success" *ngIf="success" jhiTranslate="register.messages.success">
+                <strong>Registration saved!</strong> Please check your email for confirmation.
+            </div>
+
+            <div class="alert alert-danger" *ngIf="error" jhiTranslate="register.messages.error.fail">
+                <strong>Registration failed!</strong> Please try again later.
+            </div>
+            
+            <div class="alert alert-danger" *ngIf="errorLoginExists" jhiTranslate="register.messages.error.loginexists">
+                <strong>Login is already in use!</strong> Please choose another one.
+            </div>
+
+            <div class="alert alert-danger" *ngIf="errorEmailExists" jhiTranslate="register.messages.error.emailexists">
+                <strong>Email is already in use!</strong> Please choose another one.
+            </div>
+            
+            <div class="alert alert-danger" *ngIf="errorCFExists" jhiTranslate="register.messages.error.cfexists">
+                <strong>Codice Fiscale is already in use!</strong> Please choose another one.
+            </div>
+
+            <div class="alert alert-danger" *ngIf="doNotMatch" jhiTranslate="global.messages.error.dontmatch">
+                The password and its confirmation do not match!
+            </div>         
+			<div class="alert alert-danger" *ngIf="errorCFNotValid">
+                <strong>Codice fiscale non valido</strong>
+            </div>
+        </div>
+    </div>
+    <br />
+	<form name="form" role="form" (ngSubmit)="register()" [formGroup]="registerForm" autocomplete="off" novalidate *ngIf="!success">
+		<div class="row justify-content-center">
+		    <div class="col-md-4">
+				<mat-form-field class="form-group" appearance="legacy">
+					<mat-label><span jhiTranslate="jemoloApplicationApp.candidato.nome">Nominativo</span></mat-label>
+					<input type="text" matInput name="nome" id="field_nome" placeholder="inserire il nome" oninput="this.value = this.value.toUpperCase()"
+	       				formControlName="nome" [errorStateMatcher]="matcher" required />
+					<mat-error *ngIf="registerForm.controls['nome'].hasError('required')">
+						<span jhiTranslate="entity.validation.required">Campo obligatorio</span>
+					</mat-error>
+					<mat-hint>Nome del candidato</mat-hint>	              
+				</mat-form-field>
+			</div>
+			<div class="col-md-4">
+				<mat-form-field class="form-group">
+					<mat-label><span jhiTranslate="jemoloApplicationApp.candidato.cognome">Cognome</span></mat-label>
+					<input type="text" matInput  placeholder="inserire il cognome" name="cognome" id="field_cognome" oninput="this.value = this.value.toUpperCase()"
+	                	formControlName="cognome" [errorStateMatcher]="matcher" required />
+					<mat-error *ngIf="registerForm.controls['cognome'].hasError('required')">
+						<span jhiTranslate="entity.validation.required">Campo obligatorio</span>
+					</mat-error>	
+					<mat-hint>Cognome del candidato</mat-hint>	              
+				</mat-form-field>
+			</div>
+		</div>
+		<div formGroupName="cfGroup" class="row justify-content-center">
+			<div class="col-md-4">
+				<mat-form-field class="form-group">
+					<mat-label><span jhiTranslate="jemoloApplicationApp.candidato.codiceFiscale">Codice Fiscale</span></mat-label>
+					<input type="text" matInput name="codiceFiscale" id="field_codiceFiscale" placeholder="Codice fiscale" oninput="this.value = this.value.toUpperCase()"
+                         formControlName="codiceFiscale" [errorStateMatcher]="matcher" required />
+					<mat-error *ngIf="hasErrorCF('charCheck') && !hasErrorCF('pattern') && !hasErrorCF('required')">
+                      Codice fiscale non valido.
+					</mat-error>
+					<mat-error *ngIf="hasErrorCF('required')">
+                      <span jhiTranslate="entity.validation.required">Campo obligatorio</span>
+					</mat-error>
+					<mat-error *ngIf="hasErrorCF('pattern')">
+						<span jhiTranslate="entity.validation.pattern" [translateValues]="{ pattern: ' un Codice Fiscale' }">
+						    Codice fiscale non valido.
+						</span>
+					</mat-error>
+					<mat-hint>Codice fiscale del candidato</mat-hint>
+				</mat-form-field>
+			</div>
+			<div class="col-md-4">
+				<mat-form-field class="form-group">
+					<mat-label><span jhiTranslate="jemoloApplicationApp.candidato.confirmCodiceFiscale">Conferma codice Fiscale</span></mat-label>
+					<input type="text" matInput name="confirmCodiceFiscale" id="field_confirm_codiceFiscale" placeholder="Conferma codice fiscale" oninput="this.value = this.value.toUpperCase()"
+                         formControlName="confirmCodiceFiscale" [errorStateMatcher]="confirmValidParentMatcher" jhiASppBlockCopyPaste required />
+					<mat-error *ngIf="registerForm.controls['cfGroup'].errors?.childrenNotEqual">
+                      <span jhiTranslate="global.messages.error.dontmatchCF">I codici fiacali non corrispondono</span>
+					</mat-error>
+				</mat-form-field>
+			</div>
+		</div>
+		<div formGroupName="emailGroup" class="row justify-content-center">
+			<div class="col-md-4">
+				<mat-form-field class="form-group">
+					<mat-label><span jhiTranslate="global.form.email.label">Email</span></mat-label>
+					<input matInput type="text" name="emal" id="field_email" placeholder="Email" 
+						oninput="this.value = this.value.toLowerCase()" formControlName="email" [errorStateMatcher]="matcher" required />
+					<mat-error *ngIf="hasErrorEmail('required')">
+						<span jhiTranslate="entity.validation.required">Campo obligatorio</span>
+					</mat-error>
+					<mat-error *ngIf="hasErrorEmail('pattern')">
+						<span jhiTranslate="entity.validation.pattern" [translateValues]="{ pattern: ' un indirizzo email' }">
+						    Email non valida
+						</span>
+					</mat-error>
+					<mat-hint>Email del candidato</mat-hint>
+				</mat-form-field>
+			</div>
+			<div class="col-md-4">
+				<mat-form-field class="form-group">
+					<mat-label><span jhiTranslate="global.form.confirmemail.label">Conferma email</span></mat-label>
+					<input matInput type="text" name="confirmEmail" id="field_confirm_email" placeholder="Conferma email" 
+						formControlName="confirmEmail" [errorStateMatcher]="confirmValidParentMatcher" required />
+					<mat-error *ngIf="registerForm.controls['emailGroup'].errors?.childrenNotEqual">
+						<span jhiTranslate="global.messages.error.dontmatchEmail">Le email non corrispondono</span>
+					</mat-error>
+				</mat-form-field>
+			</div>
+		</div>
+		<div formGroupName="passwordGroup" class="row justify-content-center">
+		<div class="col-md-4">
+			<mat-form-field class="form-group">
+				<mat-label><span jhiTranslate="global.form.newpassword.label">New password</span></mat-label>
+				<input [type]="hide ? 'password' : 'text'" matInput id="password" name="password" placeholder="{{'global.form.newpassword.placeholder' | translate}}"
+                         formControlName="password" [errorStateMatcher]="matcher" required />
+				<mat-error *ngIf="hasErrorPassword('required')">
+				    <span jhiTranslate="entity.validation.required">Campo obligatorio</span>
+				</mat-error>
+				<mat-error *ngIf="hasErrorPassword('pattern') && !hasErrorPassword('required')"">
+					<span jhiTranslate="entity.validation.password-pattern" [translateValues]="{ pattern: 'lunghezza minima 10 caratteri almeno una lettera maiuscola, una minuscola e un numero' }">
+				        Password non valida
+				    </span>
+     			</mat-error>
+     			<mat-icon type="button" matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+				<mat-hint>Password del candidato</mat-hint>
+			</mat-form-field>
+		</div>
+		<div class="col-md-4">
+			<mat-form-field class="form-group">
+               	<mat-label><span jhiTranslate="global.form.confirmpassword.label">New password confirmation</span></mat-label>
+               	<input type="password" matInput id="confirmPassword" placeholder="{{'global.form.confirmpassword.placeholder' | translate}}"
+                   	formControlName="confirmPassword" [errorStateMatcher]="confirmValidParentMatcher" required >
+  				<mat-error *ngIf="registerForm.controls['passwordGroup'].errors?.childrenNotEqual" >
+  					<span jhiTranslate="global.messages.error.dontmatch">Le password non corrispondono</span>
+  				</mat-error>
+			</mat-form-field>
+		</div>
+		</div><br />
+		<div class="row justify-content-center">
+		<div class="col-md-8">
+			<!-- <button type="submit" [disabled]="registerForm.invalid" class="btn btn-primary" jhiTranslate="register.form.button">Register</button> -->
+			<button mat-raised-button color="primary" [disabled]="registerForm.invalid" jhiTranslate="register.form.button">Register</button>
+		</div>
+		</div>			
+	</form>
+</div>

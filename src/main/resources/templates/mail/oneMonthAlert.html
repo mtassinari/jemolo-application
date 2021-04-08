@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title th:text="#{email.onemonth.title}">Roster modifica scheda</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link rel="shortcut icon" th:href="@{|${baseUrl}/favicon.ico|}" />
+    </head>
+    <body>
+        <p th:text="#{email.schedaupdate.greeting(${candidato.nominativo})}">
+            Gentile utente
+        </p>
+        <p>
+            Le ricordiamo che la sua utenza sul Roster Regione Lazio verrà disbilitata in caso di mancato aggiornamento della propria scheda per un periodo di tempo uguale a tre anni, 
+            la informiamo quindi, che tra un mese esatto saranno trascorsi tre anni dall'ultimo suo aggiornamento della scheda sul sistema Roster Regione Lazio e quindi
+            se non procederà ad eseguire un aggiornamento entro un mese,  la sua utenza verrà disabilitata e non le sarà più possibile accedere al Roster Regione Lazio.
+        </p>
+        <p>
+            Email generata automaticamente dal sistema Roster Regione Lazio.
+        </p>
+        <p>
+            <span th:text="#{email.schedaupdate.fine}">Saluti, </span>
+            <br/>
+            <em th:text="#{email.signature}">Roster.</em>
+        </p>
+    </body>
+</html>

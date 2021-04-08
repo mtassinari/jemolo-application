@@ -1,0 +1,23 @@
+{
+  "jemoloApplicationApp": {
+    "dichiarazioni": {
+      "home": {
+        "title": "Dichiarazioni",
+        "createLabel": "Nuova dichiarazione",
+        "createOrEditLabel": "Aggiungi modifica dichiarazione",
+        "notFound": "Non sono state trovate dichiarazioni"
+      },
+      "created": "&Egrave; stata aggiunta una nuova dichiarazione con id {{ param }}",
+      "updated": "&Egrave; stato modificata la dichiarazioni con id {{ param }}",
+      "deleted": "&Egrave; stato eliminata la dichiarazioni con id {{ param }}",
+      "delete": {
+        "question": "Sei sicuro di volere eliminare la dichiarazione con id {{ id }}?"
+      },
+      "detail": {
+        "title": "Dichiarazioni"
+      },
+      "descrizione": "Descrizione",
+      "dichiarazioniObligatorie": "Dichiarazioni Obligatorie"
+    }
+  }
+}

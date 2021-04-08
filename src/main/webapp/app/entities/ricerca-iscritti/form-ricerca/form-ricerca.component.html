@@ -1,0 +1,176 @@
+<!-- 
+<div class="row justify-content-center">
+    <div class="col-10">
+	<form name="ricercaForm" role="form" novalidate (ngSubmit)="ricercaIscritto()" [formGroup]="ricercaForm">
+	  <h2>Ricerca Candidato</h2>
+	  <div class="form-row">
+	    <div class="form-group col-md-6">
+	      <label for="inputCognome">Cognome</label>
+	      <input type="text" formControlName="cognome" class="form-control" id="inputCognome" placeholder="Cognome">
+	    </div>
+	    <div class="form-group col-md-6">
+	      <label for="inputNome">Nome</label>
+	      <input type="text" formControlName="nome" class="form-control" id="inputNome" placeholder="Nome">
+	    </div>
+	  </div>
+	  <div class="form-row">
+	    <div class="form-group col-md-6">
+	      <label for="inputTipotitolostudio">Titolo di studio: tipologia</label>
+	      <select id="inputTipotitolostudio" formControlName="tipotitolodistudioId" class="form-control">
+	        <option selected>Scegli...</option>
+	        <option>...</option>
+	      </select>
+	    </div>
+	    <div class="form-group col-md-3">
+	      <label for="inputTitolostudioannodal">Anni conseguimento dal</label>
+	      <select id="inputTitolostudioannodal" formControlName="titolostudioDal" class="form-control">
+	        <option selected>Scegli...</option>
+	        <option>...</option>
+	      </select>
+	    </div>
+	    <div class="form-group col-md-3">
+	      <label for="inputTitolostudioannoal">al</label>
+	      <select id="inputTitolostudioannoal" formControlName="titolostudioAl" class="form-control">
+	        <option selected>Scegli...</option>
+	        <option>...</option>
+	      </select>
+	    </div>
+	  </div>
+	  <div class="form-row">
+	    <div class="form-group col-md-6">
+	      <label for="inputAreacompetenza">Area di competenza</label>
+	      <select id="inputAreacompetenza" formControlName="areaCompetenzaId" class="form-control">
+	        <option selected>Scegli...</option>
+	        <option>...</option>
+	      </select>
+	    </div>
+	    <div class="form-group col-md-3">
+	      <label for="inputAnniesperienzada">Anni di esperienza da</label>
+	      <select id="inputAnniesperienzada" formControlName="areaCompetenzaDa" class="form-control">
+	        <option selected>Scegli...</option>
+	        <option>...</option>
+	      </select>
+	    </div>
+	    <div class="form-group col-md-3">
+	      <label for="inputAnniesperienzaa">Anni di esperienza a</label>
+	      <select id="inputAnniesperienzaa" formControlName="areaCompetenzaA" class="form-control">
+	        <option selected>Scegli...</option>
+	        <option>...</option>
+	      </select>
+	    </div>
+	  </div>
+	  <div class="form-row">
+	    <div class="form-group col-md-6">
+	      <label for="inputLingua">Lingua</label>
+	      <select id="inputLingua" formControlName="lingua" class="form-control">
+	        <option selected>Scegli...</option>
+	        <option>...</option>
+	      </select>
+	    </div>
+	    <div class="form-group col-md-6">
+	      <label for="inputLingualivello">Livello</label>
+	      <select id="inputLingualivello" formControlName="linguaLivello" class="form-control">
+	        <option selected>Scegli...</option>
+	        <option>...</option>
+	      </select>
+	    </div>
+	  </div>
+	  <button type="submit" class="btn btn-primary">Ricerca</button>
+	</form>
+	</div>
+</div>
+ -->
+ <div>
+    <h2 id="page-heading">
+        <span jhiTranslate="jemoloApplicationApp.anagraficaCandidato.home.title">Anagrafica Candidatoes</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-anagrafica-candidato" [routerLink]="['/anagrafica-candidato/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="jemoloApplicationApp.anagraficaCandidato.home.createLabel">
+            Create a new Anagrafica Candidato
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="alert alert-warning" *ngIf="anagraficaCandidatoes?.length === 0">
+        <span jhiTranslate="jemoloApplicationApp.anagraficaCandidato.home.notFound">No anagraficaCandidatoes found</span>
+    </div>
+	    <div class="table-responsive" *ngIf="anagraficaCandidatoes?.length > 0">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="luogoNascita"><span jhiTranslate="jemoloApplicationApp.anagraficaCandidato.luogoNascita">Luogo Nascita</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="dataNascita"><span jhiTranslate="jemoloApplicationApp.anagraficaCandidato.dataNascita">Data Nascita</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="professione"><span jhiTranslate="jemoloApplicationApp.anagraficaCandidato.professione">Professione</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="partitaIva"><span jhiTranslate="jemoloApplicationApp.anagraficaCandidato.partitaIva">Partita Iva</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="numeroTelefonoFisso"><span jhiTranslate="jemoloApplicationApp.anagraficaCandidato.numeroTelefonoFisso">Numero Telefono Fisso</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="numeroTelefonoCellulare"><span jhiTranslate="jemoloApplicationApp.anagraficaCandidato.numeroTelefonoCellulare">Numero Telefono Cellulare</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="indirizzoPec"><span jhiTranslate="jemoloApplicationApp.anagraficaCandidato.indirizzoPec">Indirizzo Pec</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="indirizzoResidenza"><span jhiTranslate="jemoloApplicationApp.anagraficaCandidato.indirizzoResidenza">Indirizzo Residenza</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="capResidenza"><span jhiTranslate="jemoloApplicationApp.anagraficaCandidato.capResidenza">Cap Residenza</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="comuneResidenza"><span jhiTranslate="jemoloApplicationApp.anagraficaCandidato.comuneResidenza">Comune Residenza</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="provinciaResidenza"><span jhiTranslate="jemoloApplicationApp.anagraficaCandidato.provinciaResidenza">Provincia Residenza</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="note"><span jhiTranslate="jemoloApplicationApp.anagraficaCandidato.note">Note</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="candidatoId"><span jhiTranslate="jemoloApplicationApp.anagraficaCandidato.candidato">Candidato</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let anagraficaCandidato of anagraficaCandidatoes ;trackBy: trackId">
+                <td><a [routerLink]="['/jemolouser/ricerca', anagraficaCandidato.id, 'view' ]">{{anagraficaCandidato.id}}</a></td>
+                <td>{{anagraficaCandidato.luogoNascita}}</td>
+                <td>{{anagraficaCandidato.dataNascita | date:'mediumDate'}}</td>
+                <td>{{anagraficaCandidato.professione}}</td>
+                <td>{{anagraficaCandidato.partitaIva}}</td>
+                <td>{{anagraficaCandidato.numeroTelefonoFisso}}</td>
+                <td>{{anagraficaCandidato.numeroTelefonoCellulare}}</td>
+                <td>{{anagraficaCandidato.indirizzoPec}}</td>
+                <td>{{anagraficaCandidato.indirizzoResidenza}}</td>
+                <td>{{anagraficaCandidato.capResidenza}}</td>
+                <td>{{anagraficaCandidato.comuneResidenza}}</td>
+                <td>{{anagraficaCandidato.provinciaResidenza}}</td>
+                <td>{{anagraficaCandidato.note}}</td>
+                <td>
+                    <div *ngIf="anagraficaCandidato.candidatoId">
+                        <a [routerLink]="['/jemolouser/candidato', anagraficaCandidato.candidatoId , 'view' ]" >{{anagraficaCandidato.candidatoId}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/jemolouser/anagrafica-candidato', anagraficaCandidato.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/jemolouser/anagrafica-candidato', anagraficaCandidato.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/jemolouser/anagrafica-candidato', { outlets: { popup: anagraficaCandidato.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <!-- Pager is not implemented yet, so this is normal pagination instead -->
+    <!-- <div *ngIf="anagraficaCandidatoes?.length > 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="ngbPaginationPage" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage($event)"></ngb-pagination>
+        </div>
+    </div> -->

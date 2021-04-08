@@ -1,0 +1,60 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-dichiarazioni-obligatorie-heading" jhiTranslate="jemoloRoosterApp.dichiarazioniObligatorie.home.createOrEditLabel">Create or edit a Dichiarazioni Obligatorie</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jemoloRoosterApp.dichiarazioniObligatorie.stato" for="field_stato">Stato</label>
+                    <input type="checkbox" class="form-control" name="stato" id="field_stato"
+                           formControlName="stato"/>
+                    <div *ngIf="editForm.get('stato')!.invalid && (editForm.get('stato')!.dirty || editForm.get('stato')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('stato')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jemoloRoosterApp.dichiarazioniObligatorie.anagrafica" for="field_anagrafica">Anagrafica</label>
+                    <select class="form-control" id="field_anagrafica" name="anagrafica" formControlName="anagraficaId">
+                        <option *ngIf="!editForm.get('anagraficaId')!.value" [ngValue]="null" selected></option>
+                        <option [ngValue]="anagraficaCandidatoOption.id" *ngFor="let anagraficaCandidatoOption of anagraficacandidatoes; trackBy: trackById">{{ anagraficaCandidatoOption.id }}</option>
+                    </select>
+                </div>
+                <div *ngIf="editForm.get('anagraficaId')!.invalid && (editForm.get('anagraficaId')!.dirty || editForm.get('anagraficaId')!.touched)">
+                    <small class="form-text text-danger"
+                           *ngIf="editForm.get('anagraficaId')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                    </small>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jemoloRoosterApp.dichiarazioniObligatorie.dichiarazioni" for="field_dichiarazioni">Dichiarazioni</label>
+                    <select class="form-control" id="field_dichiarazioni" name="dichiarazioni" formControlName="dichiarazioniId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="dichiarazioniOption.id" *ngFor="let dichiarazioniOption of dichiarazionis; trackBy: trackById">{{ dichiarazioniOption.id }}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,81 @@
+// entity definitions here
+/**
+ * Entity Candidato
+ * @author Marco Tassinari
+ */
+entity Candidato { 
+    nominativo String
+    nome String required
+    cognome String required
+    codiceFiscale String required pattern(/^[a-z]{6}[0-9]{2}[a-z][0-9]{2}[a-z][0-9]{3}[a-z]$/)
+    email String required unique pattern(/^[A-z0-9\.\+_-]+@[A-z0-9\._-]+\.[A-z]{2,6}$/)
+    login String required unique
+    password String required minlength(60) maxlength(60)
+}
+
+/**
+ * Entity AnagraficaCandidato
+ * @author Marco Tassinari
+ */
+entity AnagraficaCandidato {
+    luogoNascita String required
+    dataNascita LocalDate required
+    professione String required
+    partitaIva String unique pattern(/^[0-9]{11}$/)
+    datoreLavoro String
+    indirizzoDatoreLavoro String
+    numeroTelefonoFisso String
+    numeroTelefonoCellulare String
+    numeroTelefonoAltro String
+    indirizzoPec String required unique pattern(/^[A-z0-9\.\+_-]+@[A-z0-9\._-]+\.[A-z]{2,6}$/)
+    cittadinoUnioneEuropea Boolean
+    indirizzoResidenza String required
+    capResidenza String required
+    comuneResidenza String required
+    provinciaResidenza String required
+    titoloStudio String required
+    titoloStudioTipologia String required
+    titoloStudioLuogo String required
+    titoloStudioAnno String required
+    titoloStudioVoto String required
+    specializzazioneUniversitaria Boolean required
+    iscrizioneAlboProfessionale Boolean required
+    operatoreAmbitoTecnicoProfessionale Boolean required
+    esperienzaBiennale Boolean required
+    cv String required
+    note String	
+}
+
+/**
+ * Entity Competenza
+ * @author Marco Tassinari
+ */
+entity Competenza { 
+    descrizione String required
+    anniEsperianza Integer required
+    note String
+}
+
+/**
+ * Entity Ambito
+ * @author Marco Tassinari
+ */
+entity Ambito {
+	descrizione String required
+}
+
+dto Candidato, Competenza, AnagraficaCandidato, Ambito with mapstruct
+paginate Candidato, AnagraficaCandidato with pager
+service Candidato, Competenza, AnagraficaCandidato with serviceImpl
+
+relationship OneToOne {
+	  AnagraficaCandidato{candidato required } to Candidato{anagraficaCandidato} with jpaDerivedIdentifier
+}
+
+relationship ManyToMany {
+	Competenza{candidato required} to Candidato{competenza}
+}
+
+relationship OneToMany {
+	 Ambito{competenza} to Competenza{ambito required}
+}

@@ -1,0 +1,82 @@
+<form [formGroup]="lng">
+	<div class="form-row">
+		<div class="col">
+		<mat-checkbox color="primary" formControlName="linguaita" labelPosition="after" >
+		<span class="mat-checkbox-layout">DICHIARO DI AVERE UNA PERFETTA CONOSCENZA DELLA LINGUA ITALIANA SCRITTA E PARLATA
+		E DI CONOSCERE ALMENO UN'ALTRA LINGUA DI UNO STATO MEMBRO DELL'UNIONE EUROPEA</span>
+		</mat-checkbox>
+		<!-- status: {{isLinguaAccepted.status}} - value: {{isLinguaAccepted.value}} -->
+        <div *ngIf="isLinguaAccepted.invalid && (competenzeLinguisticheFormGroup.valid || isLinguaAccepted.dirty || isLinguaAccepted.touched)">
+            <small class="form-text text-danger"
+                   *ngIf="isLinguaAccepted.hasError('required')">
+                Accettare la dichiarazione.
+            </small>
+        </div>
+		</div>
+	</div>	
+	<div formArrayName="lingue">
+		<div *ngFor="let var_comp of competenzeLinguisticheFormGroup.controls; let i = index;">
+			<!-- {{getCompFormGroup(i).controls['lingua'].value.lingua}} -->
+			<div class="form-row" [formGroupName]="i">
+			<div *ngIf="i==0" class="col-sm-3">
+				<mat-form-field class="form-group">
+					<mat-label>Lingua</mat-label>
+					<mat-select formControlName="lingua" required [compareWith]="compareLng">
+						<mat-option [value]="" selected>------</mat-option>
+					    <mat-option *ngFor="let lingua of linguaue" [value]="lingua">
+					      {{lingua.lingua}}
+					    </mat-option>
+				    </mat-select>
+					<mat-error *ngIf="getCompFormGroup(i).controls['lingua'].hasError('required')">
+						Campo obligatorio
+					</mat-error>
+				    <mat-hint>Indicare la lingua conosciuta</mat-hint>
+				</mat-form-field>
+			</div>
+			<div *ngIf="i>0" class="col-sm-3">
+				<mat-form-field class="form-group">
+					<mat-label>Lingua</mat-label>
+					<mat-select formControlName="lingua" required [compareWith]="compareLng">
+						<mat-option [value]="" selected>------</mat-option>
+					    <mat-option *ngFor="let lingua of linguas" [value]="lingua">
+					      {{lingua.lingua}}
+					    </mat-option>
+				    </mat-select>
+					<mat-error *ngIf="getCompFormGroup(i).controls['lingua'].hasError('required')">
+						Campo obligatorio
+					</mat-error>
+				    <mat-hint>Indicare la lingua conosciuta</mat-hint>
+				</mat-form-field>
+			</div>
+			<div class="col-sm-3">
+				<mat-form-field class="form-group">
+					<mat-label>Livello</mat-label>
+					<mat-select formControlName="livello" required>
+						<mat-option [value]="" selected>------</mat-option>
+					    <mat-option *ngFor="let livello of livelli" [value]="livello.value">
+					      {{livello.viewValue}}
+					    </mat-option>
+				    </mat-select>
+					<mat-error *ngIf="getCompFormGroup(i).controls['livello'].hasError('required')">
+						Campo obligatorio
+					</mat-error>
+				    <mat-hint>Indicare il livello di conoscenza</mat-hint>
+				</mat-form-field>
+			</div>
+            <div *ngIf="i!=0" class="form-group col-6 text-left">
+            	<button mat-stroked-button color="warn" (click)="removeLingua(i)"><i class="material-icons">clear</i> Rimuovi lingua</button>
+				<!-- <button class="btn btn-danger" type="button" (click)="removeLingua(i)">Rimuovi lingua</button> -->
+            </div>
+			</div>
+		</div>
+	</div>
+	<!-- status: {{competenzeLinguisticheFormGroup.status}}
+	status: {{competenzeLinguisticheFormGroup.valid}} -->
+	<div class="form-row" style="text-align: left;">
+    <div class="col-6">
+    	<!-- <button [disabled]="competenzeLinguisticheFormGroup.invalid" mat-stroked-button color="primary" (click)="addLingua()"><i class="material-icons">add</i> Aggiungi un'altra lingua</button> -->
+    	<button [disabled]="competenzeLinguisticheFormGroup.invalid" mat-raised-button color="primary" (click)="addLingua()"><i class="material-icons">add</i> Aggiungi un'altra lingua</button>
+		<!-- <button [disabled]="competenzeLinguisticheFormGroup.invalid" class="btn btn-primary" type="button" (click)="addLingua()"><i class="material-icons">add</i> Aggiungi un'altra lingua</button> -->
+	</div>
+	</div>
+</form>

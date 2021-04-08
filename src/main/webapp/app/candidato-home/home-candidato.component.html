@@ -1,0 +1,86 @@
+<div class="row">
+	<div class="col-md-2">
+        <!-- <span class="hipster img-fluid rounded"></span> -->
+        <!-- <mat-icon aria-hidden="false" aria-label="home icon">home</mat-icon> -->
+    </div>
+    <div class="col-md-8">
+<!--  <jhi-alert></jhi-alert> -->
+        <!-- <h1 class="display-4" jhiTranslate="home-candidato.title">Welcome, Java Hipster!</h1> -->
+        <!-- <p class="lead" jhiTranslate="home-candidato.subtitle">This is your homepage</p> -->
+        <div [ngSwitch]="isAuthenticated()">
+            <div class="alert alert-success" *ngSwitchCase="true">
+                <!-- <span id="home-logged-message" *ngIf="account" jhiTranslate="home.logged.message"
+                    [translateValues]="{username: account.login}"> You are logged in as candidato "{{account.login}}". </span> -->
+                    <span id="home-logged-message" *ngIf="account">{{account.email}}</span>
+		        <div *ngIf="account">
+		            <!-- <h2><span jhiTranslate="jemoloApplicationApp.candidato.detail.title">Candidato</span> {{account.id}}</h2> -->
+		            <hr>
+		            <jhi-alert-error></jhi-alert-error>
+		            <dl class="row-md jh-entity-details">
+		                <dt><span jhiTranslate="jemoloApplicationApp.candidato.nominativo">Nominativo</span></dt>
+		                <dd>
+		                    <span>{{account.nominativo}}</span>
+		                </dd>
+		            </dl>
+		            <!-- account.anagraficaCandidatoId: {{account.anagraficaCandidatoId}} -->
+		        	<!-- <div *ngIf="!account.anagraficaCandidatoId"> -->
+		        	<div *ngIf="!scheda">
+						<button type="button"
+			                    [routerLink]="['/jemoloiscritto/scheda/new']"
+	                                class="btn btn-info btn-sm">
+	                            <fa-icon [icon]="'plus'"></fa-icon>
+	                            <span class="d-none d-md-inline">Compila la scheda</span>
+			            </button>
+		            </div>
+		            <!-- <div *ngIf="account.anagraficaCandidatoId"> -->
+		            <div *ngIf="scheda">
+			            <button type="button"
+			                    [routerLink]="['/jemoloiscritto/scheda', account.id, 'edit']"
+	                                class="btn btn-info btn-sm">
+	                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+	                            <span class="d-none d-md-inline">Aggiorna la scheda</span>
+			            </button>
+                        <button type="submit"
+                                [routerLink]="['/jemoloiscritto/scheda', account.id, 'view']"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline">Visualizza la scheda</span>
+                        </button>
+		            </div>
+		        </div>       
+			</div>
+	        <!-- <div class="col-md-8">
+	            <div *ngIf="authenticationError" class="alert alert-danger"jhiTranslate="login.messages.error.authentication">
+	                <strong>Failed to sign in!</strong> Please check your credentials and try again.
+	            </div>
+	        </div> -->
+            <div *ngSwitchCase="false">  
+				<mat-card class="home-card">
+					<mat-card-header>
+					  	<mat-card-title class = "mat-card-header">Homepage</mat-card-title>
+					  	<mat-card-subtitle>Non autenticato</mat-card-subtitle>
+					</mat-card-header>
+					<mat-card-content class="testo-home">
+						<p>Gentile Utente,</p>
+						<p>in questa sezione potr&agrave; registrare i Suoi dati al fine dell'iscrizione nell'elenco Roster &ndash; Banca dati di Esperti per la Regione Lazio - di cui alla Deliberazione della Giunta Regionale del Lazio n. 67 del 24.02.2015.</p>
+						<p>Il primo inserimento che effettuer&agrave; sar&agrave; utile per la registrazione del Suo nominativo. La registrazione andr&agrave; poi confermata cliccando sul link che ricever&agrave; nella mail da Lei comunicata in fase di registrazione.</p>
+						<p>Si ricorda inoltre che &egrave; obbligatorio e a Suo carico l'aggiornamento relativo ad ogni variazione dei Suoi dati e del CV. Si ricorda inoltre che se il sistema rilever&agrave; una inattivit&agrave; della Sua scheda per un periodo superiore ai 36 mesi il sistema provveder&agrave; a cancellare il Suo nominativo dalla banca dati Roster. In ogni caso sar&agrave; avvisato tempestivamente all'indirizzo mail indicato in fase di registrazione per darLe la possibilit&agrave; di aggiornare la Sua scheda e non essere cancellato.</p>
+						<p><strong>NOTA BENE</strong><br>
+	  					In caso del venir meno dei requisiti obbligatori richiesti per l'iscrizione nell'elenco Roster dovr&agrave; cancellare la Sua iscrizione. Potr&agrave; comunque registrarsi ed iscriversi nuovamente in qualunque momento una volta tornato in possesso dei requisiti necessari.</p>
+					</mat-card-content>
+					<mat-card-actions class = "mat-card-actions">
+					  	<button mat-raised-button (click)="login()" color="primary" jhiTranslate="login.form.button" style="margin-right:15px;">Login</button>
+						<button mat-raised-button (click)="register()" color="primary" style="margin-right:15px;">Registrati</button>
+					</mat-card-actions>
+				</mat-card>
+            </div>
+        </div>
+        <div *ngFor="let avviso of avvisiHomes" class="alert alert-success">
+        	<h4>{{avviso.titolo}}</h4>
+        	<div>{{avviso.avvisoHome}}</div>
+       	</div>
+    </div>
+	<div class="col-md-2">
+        <!-- <span class="hipster img-fluid rounded"></span> -->
+    </div>
+</div>

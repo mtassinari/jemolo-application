@@ -1,0 +1,26 @@
+{
+  "jemoloApplicationApp": {
+    "ambitoCompetenza": {
+      "home": {
+        "title": "Ambito competenze",
+        "createLabel": "Genera un nuovo ambito",
+        "createOrEditLabel": "Genera o modifica un ambito",
+        "notFound": "Non sono presenti ambiti"
+      },
+      "created": "&Egrave; stato generato un nuovo ambito competenza con id: {{ param }}",
+      "updated": "&Egrave; stato aggiornato un ambito con id: {{ param }}",
+      "deleted": "&Egrave; stato eliminato ambito id: {{ param }}",
+      "delete": {
+        "question": "Sei sicuro di volere eliminare ambto id: {{ id }}?"
+      },
+      "detail": {
+        "title": "Ambito Competenza"
+      },
+      "descrizione": "Descrizione",
+      "tipo": "Tipo",
+      "competenza": "Competenza",
+      "sottoambito": "Sottoambito",
+      "ambito": "Ambito"
+    }
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "jemoloApplicationApp": {
+    "candidato": {
+      "registrazione": "Pagina di registrazione",
+      "home": {
+        "title": "Lista candidati",
+        "createLabel": "Genera un nuovo Candidato",
+        "createOrEditLabel": "Genera o modifica un Candidato",
+        "ownEditLabel": "Modifica registrazione",
+        "notFound": "Nessun candidato trovato"
+      },
+      "created": "&Egrave; stato generato un nuovo Candidato con identificatore {{ param }}",
+      "updated": "&Egrave; stato aggiornato Candidato identificato da {{ param }}",
+      "deleted": "&Egrave; stato eliminato Candidato con identificatore {{ param }}",
+      "delete": {
+        "question": "Sei sicuro di volere eliminare Candidato {{ id }}?"
+      },
+      "detail": {
+        "title": "Candidato"
+      },
+      "id": "ID",
+      "nominativo": "Nominativo",
+      "nome": "Nome",
+      "cognome": "Cognome",
+      "codiceFiscale": "Codice Fiscale",
+      "confirmCodiceFiscale": "Conferma codice Fiscale",
+      "email": "Email",
+      "competenzeLng": "Competenze Lng",
+      "titoloStudio": "Titolo Studio",
+      "curriculum": "Curriculum",
+      "anagraficaCandidato": "Anagrafica Candidato",
+      "competenza": "Competenza",
+      "anagraficaCandidatoId": "Anagrafica",
+      "statoregistrazione": "Statoregistrazione"
+    },
+    "iscritto": {
+    	"ricerca": {
+    		"home": {
+    			"title": "Ricerca iscritto"
+    		}
+    	}
+    }
+  }
+}

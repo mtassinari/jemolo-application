@@ -1,0 +1,186 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+        	<div *ngIf="!editForm.get('id').value">
+            	<h2 id="jhi-anagrafica-candidato-heading" jhiTranslate="jemoloApplicationApp.anagraficaCandidato.ownCreateLabel">Inserisci anagrafica</h2>
+            </div>
+        	<div *ngIf="editForm.get('id').value">
+            	<h2 id="jhi-anagrafica-candidato-heading" jhiTranslate="jemoloApplicationApp.anagraficaCandidato.ownEditLabel">Modifica anagrafica</h2>
+            </div>
+           	<div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!editForm.get('id').value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jemoloApplicationApp.anagraficaCandidato.nome" for="field_nome">Nome</label>
+                    <input type="text" class="form-control" name="nome" id="field_nome"
+                           formControlName="nome"/>
+                    <div *ngIf="editForm.get('nome').invalid && (editForm.get('nome').dirty || editForm.get('nome').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('nome').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jemoloApplicationApp.anagraficaCandidato.cognome" for="field_cognome">Cognome</label>
+                    <input type="text" class="form-control" name="cognome" id="field_cognome"
+                           formControlName="cognome"/>
+                    <div *ngIf="editForm.get('cognome').invalid && (editForm.get('cognome').dirty || editForm.get('cognome').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('cognome').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jemoloApplicationApp.anagraficaCandidato.luogoNascita" for="field_luogoNascita">Luogo Nascita</label>
+                    <input type="text" class="form-control" name="luogoNascita" id="field_luogoNascita"
+                           formControlName="luogoNascita"/>
+                    <div *ngIf="editForm.get('luogoNascita').invalid && (editForm.get('luogoNascita').dirty || editForm.get('luogoNascita').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('luogoNascita').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jemoloApplicationApp.anagraficaCandidato.dataNascita" for="field_dataNascita">Data Nascita</label>
+                    <div class="input-group">
+                        <input id="field_dataNascita" type="text" class="form-control" name="dataNascita" ngbDatepicker  #dataNascitaDp="ngbDatepicker" formControlName="dataNascita"/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="dataNascitaDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                    <div *ngIf="editForm.get('dataNascita').invalid && (editForm.get('dataNascita').dirty || editForm.get('dataNascita').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('dataNascita').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jemoloApplicationApp.anagraficaCandidato.professione" for="field_professione">Professione</label>
+                    <input type="text" class="form-control" name="professione" id="field_professione"
+                           formControlName="professione"/>
+                    <div *ngIf="editForm.get('professione').invalid && (editForm.get('professione').dirty || editForm.get('professione').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('professione').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jemoloApplicationApp.anagraficaCandidato.partitaIva" for="field_partitaIva">Partita Iva</label>
+                    <input type="text" class="form-control" name="partitaIva" id="field_partitaIva"
+                           formControlName="partitaIva"/>
+                    <div *ngIf="editForm.get('partitaIva').invalid && (editForm.get('partitaIva').dirty || editForm.get('partitaIva').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('partitaIva').errors.pattern" jhiTranslate="entity.validation.pattern" [translateValues]="{ pattern: 'Partita Iva' }">
+                            This field should follow pattern for "Partita Iva".
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jemoloApplicationApp.anagraficaCandidato.numeroTelefonoFisso" for="field_numeroTelefonoFisso">Numero Telefono Fisso</label>
+                    <input type="text" class="form-control" name="numeroTelefonoFisso" id="field_numeroTelefonoFisso"
+                           formControlName="numeroTelefonoFisso"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jemoloApplicationApp.anagraficaCandidato.numeroTelefonoCellulare" for="field_numeroTelefonoCellulare">Numero Telefono Cellulare</label>
+                    <input type="text" class="form-control" name="numeroTelefonoCellulare" id="field_numeroTelefonoCellulare"
+                           formControlName="numeroTelefonoCellulare"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jemoloApplicationApp.anagraficaCandidato.indirizzoPec" for="field_indirizzoPec">Indirizzo Pec</label>
+                    <input type="text" class="form-control" name="indirizzoPec" id="field_indirizzoPec"
+                           formControlName="indirizzoPec"/>
+                    <div *ngIf="editForm.get('indirizzoPec').invalid && (editForm.get('indirizzoPec').dirty || editForm.get('indirizzoPec').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('indirizzoPec').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('indirizzoPec').errors.pattern" jhiTranslate="entity.validation.pattern" [translateValues]="{ pattern: 'Indirizzo Pec' }">
+                            This field should follow pattern for "Indirizzo Pec".
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jemoloApplicationApp.anagraficaCandidato.indirizzoResidenza" for="field_indirizzoResidenza">Indirizzo Residenza</label>
+                    <input type="text" class="form-control" name="indirizzoResidenza" id="field_indirizzoResidenza"
+                           formControlName="indirizzoResidenza"/>
+                    <div *ngIf="editForm.get('indirizzoResidenza').invalid && (editForm.get('indirizzoResidenza').dirty || editForm.get('indirizzoResidenza').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('indirizzoResidenza').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jemoloApplicationApp.anagraficaCandidato.capResidenza" for="field_capResidenza">Cap Residenza</label>
+                    <input type="text" class="form-control" name="capResidenza" id="field_capResidenza"
+                           formControlName="capResidenza"/>
+                    <div *ngIf="editForm.get('capResidenza').invalid && (editForm.get('capResidenza').dirty || editForm.get('capResidenza').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('capResidenza').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jemoloApplicationApp.anagraficaCandidato.comuneResidenza" for="field_comuneResidenza">Comune Residenza</label>
+                    <input type="text" class="form-control" name="comuneResidenza" id="field_comuneResidenza"
+                           formControlName="comuneResidenza"/>
+                    <div *ngIf="editForm.get('comuneResidenza').invalid && (editForm.get('comuneResidenza').dirty || editForm.get('comuneResidenza').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('comuneResidenza').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jemoloApplicationApp.anagraficaCandidato.provinciaResidenza" for="field_provinciaResidenza">Provincia Residenza</label>
+                    <input type="text" class="form-control" name="provinciaResidenza" id="field_provinciaResidenza"
+                           formControlName="provinciaResidenza"/>
+                    <div *ngIf="editForm.get('provinciaResidenza').invalid && (editForm.get('provinciaResidenza').dirty || editForm.get('provinciaResidenza').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('provinciaResidenza').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jemoloApplicationApp.anagraficaCandidato.note" for="field_note">Note</label>
+                    <input type="text" class="form-control" name="note" id="field_note"
+                           formControlName="note"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jemoloApplicationApp.anagraficaCandidato.candidato" for="field_candidato">Candidato</label>
+                    <select class="form-control" id="field_candidato" name="candidato" formControlName="candidatoId">
+                        <option *ngIf="!editForm.get('candidatoId').value" [ngValue]="null" selected></option>
+                        <option [ngValue]="candidatoOption.id" *ngFor="let candidatoOption of candidatoes; trackBy: trackCandidatoById">{{candidatoOption.id}}</option>
+                    </select>
+                </div>
+                <div *ngIf="editForm.get('candidatoId').invalid && (editForm.get('candidatoId').dirty || editForm.get('candidatoId').touched)">
+                    <small class="form-text text-danger"
+                           *ngIf="editForm.get('candidatoId').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                    </small>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

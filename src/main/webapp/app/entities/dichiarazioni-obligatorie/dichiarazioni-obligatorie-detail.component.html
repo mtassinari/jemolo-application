@@ -1,0 +1,42 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="dichiarazioniObligatorie">
+            <h2><span jhiTranslate="jemoloRoosterApp.dichiarazioniObligatorie.detail.title">Dichiarazioni Obligatorie</span> {{ dichiarazioniObligatorie.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="jemoloRoosterApp.dichiarazioniObligatorie.stato">Stato</span></dt>
+                <dd>
+                    <span>{{ dichiarazioniObligatorie.stato }}</span>
+                </dd>
+                <dt><span jhiTranslate="jemoloRoosterApp.dichiarazioniObligatorie.anagrafica">Anagrafica</span></dt>
+                <dd>
+                    <div *ngIf="dichiarazioniObligatorie.anagraficaId">
+                        <a [routerLink]="['/anagrafica-candidato', dichiarazioniObligatorie.anagraficaId, 'view']">{{ dichiarazioniObligatorie.anagraficaId }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="jemoloRoosterApp.dichiarazioniObligatorie.dichiarazioni">Dichiarazioni</span></dt>
+                <dd>
+                    <div *ngIf="dichiarazioniObligatorie.dichiarazioniId">
+                        <a [routerLink]="['/dichiarazioni', dichiarazioniObligatorie.dichiarazioniId, 'view']">{{ dichiarazioniObligatorie.dichiarazioniId }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/dichiarazioni-obligatorie', dichiarazioniObligatorie.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

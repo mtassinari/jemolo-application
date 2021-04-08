@@ -1,0 +1,45 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+    <changeSet author="mtassinari (generated)" id="1573214252475-1">
+        <dropColumn columnName="cittadino_unione_europea" tableName="anagrafica_candidato"/>
+    </changeSet>
+    <changeSet author="mtassinari (generated)" id="1573214252475-2">
+        <dropColumn columnName="cv" tableName="anagrafica_candidato"/>
+    </changeSet>
+    <changeSet author="mtassinari (generated)" id="1573214252475-3">
+        <dropColumn columnName="datore_lavoro" tableName="anagrafica_candidato"/>
+    </changeSet>
+    <changeSet author="mtassinari (generated)" id="1573214252475-4">
+        <dropColumn columnName="esperienza_biennale" tableName="anagrafica_candidato"/>
+    </changeSet>
+    <changeSet author="mtassinari (generated)" id="1573214252475-5">
+        <dropColumn columnName="indirizzo_datore_lavoro" tableName="anagrafica_candidato"/>
+    </changeSet>
+    <changeSet author="mtassinari (generated)" id="1573214252475-6">
+        <dropColumn columnName="iscrizione_albo_professionale" tableName="anagrafica_candidato"/>
+    </changeSet>
+    <changeSet author="mtassinari (generated)" id="1573214252475-7">
+        <dropColumn columnName="numero_telefono_altro" tableName="anagrafica_candidato"/>
+    </changeSet>
+    <changeSet author="mtassinari (generated)" id="1573214252475-8">
+        <dropColumn columnName="operatore_ambito_tecnico_professionale" tableName="anagrafica_candidato"/>
+    </changeSet>
+    <changeSet author="mtassinari (generated)" id="1573214252475-9">
+        <dropColumn columnName="specializzazione_universitaria" tableName="anagrafica_candidato"/>
+    </changeSet>
+    <changeSet author="mtassinari (generated)" id="1573214252475-10">
+        <dropColumn columnName="titolo_studio" tableName="anagrafica_candidato"/>
+    </changeSet>
+    <changeSet author="mtassinari (generated)" id="1573214252475-11">
+        <dropColumn columnName="titolo_studio_anno" tableName="anagrafica_candidato"/>
+    </changeSet>
+    <changeSet author="mtassinari (generated)" id="1573214252475-12">
+        <dropColumn columnName="titolo_studio_luogo" tableName="anagrafica_candidato"/>
+    </changeSet>
+    <changeSet author="mtassinari (generated)" id="1573214252475-13">
+        <dropColumn columnName="titolo_studio_tipologia" tableName="anagrafica_candidato"/>
+    </changeSet>
+    <changeSet author="mtassinari (generated)" id="1573214252475-14">
+        <dropColumn columnName="titolo_studio_voto" tableName="anagrafica_candidato"/>
+    </changeSet>
+</databaseChangeLog>

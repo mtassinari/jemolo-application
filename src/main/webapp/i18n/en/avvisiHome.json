@@ -1,0 +1,24 @@
+{
+  "jemoloApplicationApp": {
+    "avvisiHome": {
+      "home": {
+        "title": "Avvisi Homes",
+        "createLabel": "Create a new Avvisi Home",
+        "createOrEditLabel": "Create or edit a Avvisi Home",
+        "notFound": "No Avvisi Homes found"
+      },
+      "created": "A new Avvisi Home is created with identifier {{ param }}",
+      "updated": "A Avvisi Home is updated with identifier {{ param }}",
+      "deleted": "A Avvisi Home is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Avvisi Home {{ id }}?"
+      },
+      "detail": {
+        "title": "Avvisi Home"
+      },
+      "titolo": "Titolo",
+      "avvisoHome": "Avviso Home",
+      "visibile": "Visibile"
+    }
+  }
+}

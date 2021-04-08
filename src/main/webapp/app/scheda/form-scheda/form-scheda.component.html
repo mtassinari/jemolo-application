@@ -1,0 +1,191 @@
+<div class="overlay" *ngIf="isSaving">
+<div class="center">
+    <!-- <mat-progress-spinner diameter=50 
+	                      mode="indeterminate"
+						  color="accent">
+	</mat-progress-spinner> -->
+	<mat-spinner></mat-spinner>
+</div>
+</div>
+<div class="container content">
+	<div class="row justify-content-center">
+        <div class="col-md-12">
+		<h3 mat-header>Scheda candidato</h3>
+        </div>
+	</div>
+	<!-- <jhi-alert></jhi-alert> -->
+	<div [formGroup]="editForm">
+		<jhi-alert-error></jhi-alert-error>
+		<!-- <div class="form-group" [hidden]="!editForm.get('id').value">
+           	<input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+       	</div> -->
+		<mat-card class="anagrafica-card">
+			<mat-card-title><span class="material-icons">account_box</span> Anagrafica</mat-card-title>
+			<mat-card-content>
+				<jhi-form-anagrafica [anag]="editForm.get('anagraficaCandidato')"></jhi-form-anagrafica>
+			</mat-card-content>
+		</mat-card>
+		<mat-card>
+			<mat-card-title><span class="material-icons">school</span> Titoli di studio</mat-card-title>
+			<mat-card-content>
+				<jhi-form-titoli-studio [studio]="editForm.get('titoliStudio')"></jhi-form-titoli-studio>
+				<h5>Dchiaro di</h5>
+				<div [formGroup]="titoliStudiocheck">
+				    <div class="form-row">
+						<div class="col">
+							<mat-checkbox color="primary" formControlName="specializzazioneMaster" labelPosition="after" >
+							<span class="mat-checkbox-layout">Di aver conseguito una specializzazione universitaria dimostrata attraverso il possesso di titoli di master di I o II livello o corsi di specializzazione nelle materie per cui si chiede l'iscrizione al ROSTER (da specificare nel CV);</span>
+							</mat-checkbox>
+						</div>
+				    </div>
+				    <h5>ovvero</h5>
+					<div class="form-row">
+						<div class="col">
+							<mat-checkbox color="primary" formControlName="iscrizioneAlbo" labelPosition="after" >
+							<span class="mat-checkbox-layout">Di essere iscritto ad ordini e albi professionali;</span>
+							</mat-checkbox>
+						<!-- error.requireCheckboxToBeChecked: {{titoliStudiocheck.errors?.requireCheckboxToBeChecked}} - status: {{titoliStudiocheck.status}} - value: {{titoliStudiocheck.controls['iscrizioneAlbo'].value}} -->
+						</div>
+					</div>	
+					<div class="form-row">
+						<div class="col">
+							<mat-checkbox color="primary" formControlName="operatoreCampo" labelPosition="after" >
+							<span class="mat-checkbox-layout">Di essere un operatore nel campo dell'arte, dello spettacolo, dei mestieri artigianali, dell'attivita&#768; informatica,
+							a supporto dell'attivita&#768; didattica e ricerca ovvero in altri ambiti tecnico-professionali;</span>
+							</mat-checkbox>				
+						</div>
+					</div>	
+					<div class="form-row">
+						<div class="col">
+						<mat-checkbox color="primary" formControlName="esperienzaBiennale" labelPosition="after" >
+						<span class="mat-checkbox-layout">Di avere una comprovata e rilevante esperienza di lavoro almeno biennale nelle Aree di competenza;</span>
+						</mat-checkbox>
+						</div>
+					</div>
+					<!-- <mat-error *ngIf="titoliStudiocheck.hasError('requireCheckboxToBeChecked') && (isSpecializzazioneMaster.dirty || isSpecializzazioneMaster.touched)">
+						<span>Accettare almeno una dichiarazione.</span>
+					</mat-error>	 -->							
+					<mat-error *ngIf="titoliStudiocheck.hasError('requireCheckboxToBeChecked') && (titoliStudiocheck.dirty || titoliStudiocheck.touched)">
+						<span>Accettare almeno una dichiarazione.</span>
+					</mat-error>								
+				</div>
+			</mat-card-content>
+		</mat-card>
+		<!-- <mat-card>
+			<mat-card-title><mat-icon>playlist_add_check</mat-icon> Dichiaro</mat-card-title>
+			<mat-card-content> -->
+			<!-- <div *ngIf="isSpecializzazioneMaster.invalid && (!editForm.get('titoliStudio').invalid || isSpecializzazioneMaster.dirty || isSpecializzazioneMaster.touched)">
+			<mat-error *ngIf="isSpecializzazioneMaster.hasError('required')">
+				<span>Accettare la dichiarazione.</span>
+			</mat-error>
+			</div> -->
+			<!-- <div class="form-row">
+				<div class="col">
+				<mat-checkbox color="primary" formControlName="specializzazioneMaster" labelPosition="after" >
+					<div class="mat-checkbox-layout">
+					Di aver conseguito una specializzazione universitaria dimostrata attraverso il possesso di titoli di master di I o II livello o corsi di specializzazione nelle materie per cui si chiede l'iscrizione al ROSTER (da specificare nel CV)
+					</div>
+				</mat-checkbox>
+				</div>
+			</div> -->
+			<!-- <mat-card>
+			<mat-card-header>
+				<mat-card-title>e</mat-card-title>
+			</mat-card-header>
+			<mat-card-content> -->
+			<!-- <div [formGroup]="titoliStudiocheck">
+			    <div class="form-row">
+					<div class="col">
+						<mat-checkbox color="primary" formControlName="specializzazioneMaster" labelPosition="after" >
+						<span class="mat-checkbox-layout">Di aver conseguito una specializzazione universitaria dimostrata attraverso il possesso di titoli di master di I o II livello o corsi di specializzazione nelle materie per cui si chiede l'iscrizione al ROSTER (da specificare nel CV)</span>
+						</mat-checkbox>
+					</div>
+			    </div>
+				<div class="form-row">
+					<div class="col">
+						<mat-checkbox color="primary" formControlName="iscrizioneAlbo" labelPosition="after" >
+						<span class="mat-checkbox-layout">Di essere iscritto ad ordini e albi professionali</span>
+						</mat-checkbox>
+					error.requireCheckboxToBeChecked: {{titoliStudiocheck.errors?.requireCheckboxToBeChecked}} - status: {{titoliStudiocheck.status}} - value: {{titoliStudiocheck.controls['iscrizioneAlbo'].value}}
+					</div>
+				</div>	
+				<div class="form-row">
+					<div class="col">
+						<mat-checkbox color="primary" formControlName="operatoreCampo" labelPosition="after" >
+						<span class="mat-checkbox-layout">Di essere un operatore nel campo dell'arte, dello spettacolo, dei mestieri artigianali, dell'attivita&#768; informatica,
+						a supporto dell'attivita&#768; didattica e ricerca ovvero in altri ambiti tecnico-professionali;</span>
+						</mat-checkbox>				
+					</div>
+				</div>	
+				<div class="form-row">
+					<div class="col">
+					<mat-checkbox color="primary" formControlName="esperienzaBiennale" labelPosition="after" >
+					<span class="mat-checkbox-layout">Di avere una comprovata e rilevante esperienza di lavoro almeno biennale nelle Aree di competenza;</span>
+					</mat-checkbox>
+					</div>
+				</div>
+				<mat-error *ngIf="titoliStudiocheck.hasError('requireCheckboxToBeChecked') && (isSpecializzazioneMaster.dirty || isSpecializzazioneMaster.touched)">
+					<span>Accettare almeno una dichiarazione.</span>
+				</mat-error>								
+				<mat-error *ngIf="titoliStudiocheck.hasError('requireCheckboxToBeChecked')">
+					<span>Accettare almeno una dichiarazione.</span>
+				</mat-error>								
+			</div> -->
+			<!-- </mat-card-content>
+		    </mat-card>-->
+	    	<!-- </mat-card-content> 
+	    </mat-card> -->
+		<mat-card>
+			<mat-card-title><mat-icon>work</mat-icon> <span class="aligned-with-icon">Aree di competenza</span></mat-card-title>
+			<mat-card-content>
+				<!-- compListMaster.length: {{competenzeList.length}} -->
+				<jhi-form-competenze [comp]="editForm" [compList]="competenzeList"></jhi-form-competenze>
+			</mat-card-content>
+		</mat-card>
+		<mat-card class="anagrafica-card">
+			<mat-card-title><span class="material-icons">language</span> Competenze linguistiche</mat-card-title>
+			<mat-card-content>
+				<jhi-form-lingue [lng]="editForm"></jhi-form-lingue>
+			</mat-card-content>
+		</mat-card>
+		<mat-card class="anagrafica-card">
+			<mat-card-title><mat-icon>playlist_add_check</mat-icon> Dichiarazioni obbligatorie</mat-card-title>
+			<mat-card-content>
+				<jhi-form-dichiarazioni [dich]="editForm"></jhi-form-dichiarazioni>
+			</mat-card-content>
+		</mat-card>
+		<mat-card class="anagrafica-card">
+			<mat-card-title><mat-icon>school</mat-icon> Cv</mat-card-title>
+			<mat-card-content>
+				<jhi-form-cv [cv]="editForm.get('cv')"></jhi-form-cv>
+			</mat-card-content>
+		</mat-card>
+		<mat-card class="anagrafica-card">
+			<mat-card-title><span class="material-icons">note</span> Note</mat-card-title>
+			<mat-card-content>
+			<div class="row justify-content-center">
+			<div class="col-md-12">
+		         <mat-form-field class="form-group">
+		             <mat-label class="form-control-label" for="field_note">Note</mat-label>
+		             <textarea matInput name="note" id="field_note" formControlName="note" oninput="this.value = this.value.toUpperCase()"></textarea>
+	             </mat-form-field>
+	         </div>
+	         </div>
+	         </mat-card-content>	
+		</mat-card>
+		<!-- <p>isSaving: {{isSaving}}</p>
+		<p>form: {{editForm.valid}}</p>
+		<p>cv: {{editForm.get('cv').valid}}</p> -->
+		<div class="row justify-content-center">
+			<div class="col-md-12">
+	           <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+	               <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+	           </button>
+	           <button type="submit" id="save-entity" (click)="save()" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+	           <!-- <button type="submit" id="save-entity" (click)="save()" class="btn btn-primary"> -->
+	               <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+	           </button>
+	       </div>
+		</div>
+	</div>
+</div>

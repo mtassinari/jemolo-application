@@ -1,0 +1,190 @@
+<form name="anag" role="form" autocomplete="off" novalidate [formGroup]="anag">
+	<div class="row justify-content-center">
+		<div class="col-md-6">
+			<mat-form-field class="form-group" appearance="fill">
+				<mat-label><span jhiTranslate="jemoloApplicationApp.anagraficaCandidato.nome" for="field_nome">Nome</span></mat-label>
+				<input type="text" matInput name="nome" id="field_nome"	formControlName="nome" 
+				[errorStateMatcher]="matcher" placeholder="Inserire il nome" [readonly]="true"/>
+				<mat-error *ngIf="anag.get('nome').hasError('required')">
+					<span jhiTranslate="entity.validation.required">Campo obligatorio</span>
+				</mat-error>
+				<mat-hint>Nome del candidato</mat-hint>
+			</mat-form-field>
+		</div>
+         <div class="col-md-6">
+	         <mat-form-field class="form-group" appearance="fill">
+	             <mat-label><span jhiTranslate="jemoloApplicationApp.anagraficaCandidato.cognome" for="field_cognome">Cognome</span></mat-label>
+	             <input type="text" matInput name="cognome" id="field_cognome" formControlName="cognome" 
+	             	[errorStateMatcher]="matcher" placeholder="Inserire il cognome" [readonly]="true" />
+				<mat-error *ngIf="anag.get('cognome').hasError('required')">
+					<span jhiTranslate="entity.validation.required">Campo obligatorio</span>
+				</mat-error>
+				<mat-hint>Cognome del candidato</mat-hint>
+			</mat-form-field>
+		</div>        
+	</div>
+	<div class="row justify-content-center">
+		<div class="col-md-6">
+	         <mat-form-field class="form-group">
+	             <mat-label class="form-control-label" for="field_luogoNascita"><span jhiTranslate="jemoloApplicationApp.anagraficaCandidato.luogoNascita" >Luogo Nascita</span></mat-label>
+	             <input type="text" matInput name="luogoNascita" id="field_luogoNascita" formControlName="luogoNascita" oninput="this.value = this.value.toUpperCase()"
+	             		[errorStateMatcher]="matcher" placeholder="Inserire il luogo di nascita" required />
+				<mat-error *ngIf="anag.get('luogoNascita').hasError('required')">
+					<span jhiTranslate="entity.validation.required">Campo obligatorio</span>
+				</mat-error>
+				<mat-hint>Luogo di nascita del candidato</mat-hint>
+	         </mat-form-field>
+		</div>
+		<div class="col-md-6">
+		<mat-form-field class="form-group">
+			<mat-label class="form-control-label" for="field_dataNascita"><span jhiTranslate="jemoloApplicationApp.anagraficaCandidato.dataNascitascheda">Data di nascita</span></mat-label>
+			<input matInput [matDatepicker]="datepickerRef" name="dataNascita" id="field_dataNascita" formControlName="dataNascita" 
+				[errorStateMatcher]="matcher" placeholder="Selezionare la data di nascita" required />
+			<mat-datepicker-toggle [for]="datepickerRef" matSuffix></mat-datepicker-toggle>
+			<mat-datepicker #datepickerRef></mat-datepicker>
+			<mat-error *ngIf="anag.get('dataNascita').errors?.required">Campo obligatorio</mat-error>
+			<mat-hint>Data di nascita del candidato es. 10/01/1980</mat-hint>
+		</mat-form-field>
+		</div>			
+	</div>
+	<div class="row justify-content-center">
+         <div class="col-md-3">
+	         <mat-form-field class="form-group" appearance="fill">
+	             <mat-label class="form-control-label" for="field_codiceFiscale">Codice Fiscale</mat-label>
+	             <input matInput type="text" name="codiceFiscale" id="field_codiceFiscale"
+	                    formControlName="codiceFiscale" readonly/>
+	             <mat-hint>Codice fiscale inserito in fase di registrazione e non modificabile</mat-hint>
+	         </mat-form-field>               
+         </div>
+          <div class="col-md-3">
+			<mat-form-field class="form-group">
+	             <mat-label class="form-control-label" for="field_partitaIva">Partita Iva</mat-label>
+	             <input matInput type="text" name="partitaIva" id="field_partitaIva"
+	             	formControlName="partitaIva" [errorStateMatcher]="matcher" placeholder="Inserire la partita iva"/>
+				<mat-error *ngIf="anag.get('partitaIva').hasError('pattern')">
+					<span>Partita iva non valida</span>
+				</mat-error>
+				<mat-hint>Partita iva posseduta (se posseduta)</mat-hint>
+	         </mat-form-field>
+         </div>
+         <div class="col-md-6">
+	         <mat-form-field class="form-group">
+	             <mat-label class="form-control-label" for="field_professione">Professione</mat-label>
+	             <input matInput type="text" name="professione" id="field_professione" oninput="this.value = this.value.toUpperCase()"
+	             	[errorStateMatcher]="matcher" placeholder="Inserire la professione" formControlName="professione" required/>
+				<mat-error *ngIf="anag.get('professione').hasError('required')">
+					<span jhiTranslate="entity.validation.required">Campo obligatorio</span>
+				</mat-error>
+				<mat-hint>Professione svolta</mat-hint>
+			</mat-form-field>
+		</div>
+	</div>
+	<div class="row justify-content-center">
+         <div class="col-md-6">
+	         <mat-form-field class="form-group">
+				<mat-label class="form-control-label" for="field_numeroTelefonoCellulare">Numero mobile</mat-label>
+				<input matInput type="text" name="numeroTelefonoCellulare" id="field_numeroTelefonoCellulare"
+					formControlName="numeroTelefonoCellulare" [errorStateMatcher]="matcher" placeholder="Telefono cellulare" required/>
+				<mat-error *ngIf="anag.get('numeroTelefonoCellulare').hasError('required')">
+					<span jhiTranslate="entity.validation.required">Campo obligatorio</span>
+				</mat-error>
+				<mat-hint>Recapito telefonico su rete mobile</mat-hint>
+	         </mat-form-field>
+         </div>
+         <div class="col-md-6">
+	         <mat-form-field class="form-group">
+	             <mat-label class="form-control-label" for="field_numeroTelefonoFisso">Numero Telefono Fisso</mat-label>
+	             <input matInput type="text" name="numeroTelefonoFisso" id="field_numeroTelefonoFisso"
+	                    formControlName="numeroTelefonoFisso" [errorStateMatcher]="matcher" placeholder="Telefono fisso"/>
+				<mat-hint>Recapito telefonico su rete fissa</mat-hint>               
+			</mat-form-field>
+         </div>
+	</div>
+	<div class="row justify-content-center">
+         <div class="col-md-6">
+	         <mat-form-field class="form-group" appearance="fill">
+	             <mat-label class="form-control-label" for="field_eMail">E_Mail</mat-label>
+	             <input matInput type="text" name="email" id="field_eMail" formControlName="email" readonly />
+	             <mat-hint>Email inserita in fase di registrazione e non modificabile</mat-hint>
+	         </mat-form-field>
+         </div>
+         <div class="col-md-6">
+	         <mat-form-field class="form-group">
+				<mat-label class="form-control-label"for="field_indirizzoPec">Indirizzo Pec</mat-label>
+				<input matInput type="text" name="indirizzoPec" id="field_indirizzoPec" formControlName="indirizzoPec"
+	             	[errorStateMatcher]="matcher" placeholder="Inserire indirizzo PEC"/>
+				<mat-error *ngIf="anag.get('indirizzoPec').errors?.pattern">
+					<span jhiTranslate="entity.validation.pattern" [translateValues]="{ pattern: 'Indirizzo Pec' }">L'indirizzo PEC iserito non rispetta i requisiti di una email valida</span>
+				</mat-error>
+				<mat-hint>Indirizzo di posta elettronica certificata posseduto</mat-hint>
+	         </mat-form-field>
+         </div>
+	</div>
+	<div class="row justify-content-center">
+         <div class="col-md-12">
+	         <mat-form-field class="form-group">
+	             <mat-label class="form-control-label" for="field_indirizzoResidenza">Indirizzo Residenza</mat-label>
+	             <input matInput type="text" name="indirizzoResidenza" id="field_indirizzoResidenza" formControlName="indirizzoResidenza" oninput="this.value = this.value.toUpperCase()"
+	             	[errorStateMatcher]="matcher" placeholder="Inserire indirizzo" required/>
+				<mat-error *ngIf="anag.get('indirizzoResidenza').hasError('required')">
+					<span jhiTranslate="entity.validation.required">Campo obligatorio</span>
+				</mat-error>		             
+	             <mat-hint>Indirizzo di residenza</mat-hint>
+	         </mat-form-field>
+         </div>
+    </div>
+	<div class="row justify-content-center">
+         <div class="col-md-5">
+	         <mat-form-field class="form-group">
+	             <mat-label class="form-control-label" for="field_provinciaResidenza">Prov</mat-label>
+	             <!-- <input matInput type="text" name="provinciaResidenza" id="field_provinciaResidenza"
+	                    formControlName="provinciaResidenza" [errorStateMatcher]="matcher" placeholder="Prov" required /> -->
+	                    
+					<mat-select formControlName="provinciaResidenza" (selectionChange)="onSelect($event.value)" required>
+						<mat-option [value]="" selected>------</mat-option>
+					    <mat-option *ngFor="let provincia of provincie" [value]="provincia.sigla">
+					      {{provincia.nome}}
+					    </mat-option>
+				    </mat-select>
+	            
+				<mat-error *ngIf="anag.get('provinciaResidenza').hasError('required')">
+					<span jhiTranslate="entity.validation.required">Campo obligatorio</span>
+				</mat-error>		             
+				<mat-hint>Provincia di residenza</mat-hint>
+	         </mat-form-field>
+         </div>
+         <div class="col-md-6">
+	         <mat-form-field class="form-group">
+	             <mat-label class="form-control-label" for="field_comuneResidenza">Comune</mat-label>
+	             <!-- <input matInput type="text" name="comuneResidenza" id="field_comuneResidenza"
+	                    formControlName="comuneResidenza" [errorStateMatcher]="matcher" placeholder="Inserire il comune" required /> -->
+	                    
+					<mat-select formControlName="comuneResidenza"  id="field_comuneResidenza" required>
+						<mat-option [value]="" selected>------</mat-option>
+					    <mat-option *ngFor="let comune of comuni" [value]="comune.nome">
+					      {{comune.nome}}
+					    </mat-option>
+				    </mat-select>
+				    
+				<mat-error *ngIf="anag.get('comuneResidenza').hasError('required')">
+					<span jhiTranslate="entity.validation.required">Campo obligatorio</span>
+				</mat-error>		             
+				<mat-hint>Comune di residenza</mat-hint>
+	         </mat-form-field>
+		</div>
+        <div class="col-md-1">
+	         <mat-form-field class="form-group">
+	             <mat-label class="form-control-label" for="field_capResidenza">Cap</mat-label>
+	             <input matInput type="text" name="capResidenza" id="field_capResidenza"
+	             		formControlName="capResidenza" [errorStateMatcher]="matcher" placeholder="CAP" required />
+				<mat-error *ngIf="anag.get('capResidenza').hasError('required')">
+					<span jhiTranslate="entity.validation.required">Campo obligatorio</span>
+				</mat-error>		             
+				<mat-error *ngIf="anag.get('capResidenza').errors?.pattern">
+					<span>Formato non valido</span>
+				</mat-error>		             
+				<mat-hint>Cap di residenza</mat-hint>
+			</mat-form-field>
+        </div>
+	</div>
+</form>

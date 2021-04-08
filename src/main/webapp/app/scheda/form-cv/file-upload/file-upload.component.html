@@ -1,0 +1,8 @@
+<div class="input-group-prepend">
+  <button mat-stroked-button color="primary" (click)="fileInput.click()"><i class="material-icons">cloud_upload</i> Aggiorna il cv</button>
+</div>
+<div style="color:black;font-weight:bold">Sono ammessi solo file PDF con dimensione non superiore a 3MB</div>
+<div class="custom-file">
+	<input type="file" #fileInput class="custom-file-input" id="inputGroupFile03" aria-describedby="inputGroupFileAddon03">
+	<label for="inputGroupFile03">{{file ? file.name : 'Nessun file selezionato' }}{{file ? '('+formatBytes(file.size)+')' : '' }}</label>
+</div>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title th:text="#{email.schedaupdate.title}">Roster modifica scheda</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link rel="shortcut icon" th:href="@{|${baseUrl}/favicon.ico|}" />
+    </head>
+    <body>
+        <p th:text="#{email.schedaupdate.greeting(${candidato.nominativo})}">
+            Gentile utente
+        </p>
+        <p th:text="#{email.schedaupdate.messaggio}">
+            La tua scheda è stata modificata correttamente.
+        </p>
+        <p th:text="#{email.schedaupdate.avviso}">
+            Email generata automaticamente.
+        </p>
+        <p>
+            <span th:text="#{email.schedaupdate.fine}">Saluti, </span>
+            <br/>
+            <em th:text="#{email.signature}">JemoloRooster.</em>
+        </p>
+    </body>
+</html>

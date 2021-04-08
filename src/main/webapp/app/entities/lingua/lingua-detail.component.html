@@ -1,0 +1,31 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="lingua">
+            <h2><span jhiTranslate="jemoloApplicationApp.lingua.detail.title">Lingua</span> {{lingua.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="jemoloApplicationApp.lingua.lingua">Lingua</span></dt>
+                <dd>
+                    <span>{{lingua.lingua}}</span>
+                </dd>
+                <dt><span jhiTranslate="jemoloApplicationApp.lingua.linguaUe">Lingua Ue</span></dt>
+                <dd>
+                    <span>{{ lingua.linguaUe }}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/jemolouser/lingua', lingua.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,52 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="curriculum">
+            <h2><span jhiTranslate="jemoloApplicationApp.curriculum.detail.title">Curriculum</span> {{curriculum.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="jemoloApplicationApp.curriculum.cv">Cv</span></dt>
+                <dd>
+                    <span>{{curriculum.cv}}</span>
+                </dd>
+                <dt><span jhiTranslate="jemoloApplicationApp.curriculum.attach">Attach</span></dt>
+                <dd>
+                    <div *ngIf="curriculum.allegatoId">
+                        id allegato <a [routerLink]="['/allegato', curriculum.allegatoId, 'view']">{{curriculum.allegatoId}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="jemoloApplicationApp.curriculum.candidato">Candidato</span></dt>
+                <dd>
+                    <div *ngIf="curriculum.anagraficaId">
+                        <a [routerLink]="['/anagrafica-candidato', curriculum.anagraficaId, 'view']">
+                        {{curriculum.anagrafica.nome}} {{curriculum.anagrafica.cognome}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="userManagement.createdBy">Created By</span></dt>
+                <dd>{{curriculum.createdBy}}</dd>
+                <dt><span jhiTranslate="userManagement.createdDate">Created Date</span></dt>
+                <dd>{{curriculum.createdDate | date:'dd/MM/yy HH:mm' }}</dd>
+                <dt><span jhiTranslate="userManagement.lastModifiedBy">Last Modified By</span></dt>
+                <dd>{{curriculum.lastModifiedBy}}</dd>
+                <dt><span jhiTranslate="userManagement.lastModifiedDate">Last Modified Date</span></dt>
+                <dd>{{curriculum.lastModifiedDate | date:'dd/MM/yy HH:mm'}}</dd>
+                <dt><span jhiTranslate="jemoloApplicationApp.curriculum.note">Note</span></dt>
+                <dd>
+                    <span>{{curriculum.note}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/curriculum', curriculum.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

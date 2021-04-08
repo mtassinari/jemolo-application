@@ -1,0 +1,70 @@
+<form [formGroup]=studio autocomplete="off" novalidate>
+	<div class="form-row">
+		<div class="col">
+			<mat-form-field class="form-group">
+				<mat-label>Tipologia</mat-label>
+				<mat-select formControlName="tipologia" required>
+					<mat-option [value]="" selected>------</mat-option>
+				    <mat-option *ngFor="let tipologia of tipologie" [value]="tipologia.value">
+				      {{tipologia.viewValue}}
+				    </mat-option>
+			    </mat-select>
+				<mat-error *ngIf="studio.get('tipologia').hasError('required')">
+					Campo obligatorio
+				</mat-error>
+			    <mat-hint>Indicare la tipologia del titolo di studio</mat-hint>
+			</mat-form-field>
+		</div>
+	</div>
+	<div class="form-row">
+		<div class="col">
+			<mat-form-field class="form-group">
+				<mat-label>Titolo di studio</mat-label>
+				<input type="text" matInput formControlName="descrizione" name="descrizione" id="field_descrizione" oninput="this.value = this.value.toUpperCase()"
+					 [errorStateMatcher]="matcher" placeholder="Specificare il titolo di studio" required />
+				<mat-error *ngIf="studio.get('descrizione').hasError('required')">
+					Campo obligatorio
+				</mat-error>
+				<mat-hint>Specificare il proprio titolo di studio</mat-hint>
+			</mat-form-field>
+		</div>		
+	</div>
+	<div class="form-row">
+		<div class="col-sm-8">
+			<mat-form-field class="form-group">
+				<mat-label>Conseguito presso</mat-label>
+				<input type="text" formControlName="conseguimento" matInput name="conseguimento" id="field_conseguimento" oninput="this.value = this.value.toUpperCase()"
+					 [errorStateMatcher]="matcher" placeholder="Conseguito presso..." required />
+				<mat-error *ngIf="studio.get('conseguimento').hasError('required')">
+					Campo obligatorio
+				</mat-error>
+				<mat-hint>Indicare dove si &#232; conseguito il titolo di studio</mat-hint>
+			</mat-form-field>
+		</div>		
+		<div class="col-sm-2">
+			<mat-form-field class="form-group">
+				<mat-label>Anno</mat-label>
+				<mat-select formControlName="anno" [errorStateMatcher]="matcher" required>
+				  <mat-option [value]="" selected></mat-option>
+				  <!-- <mat-option *ngFor="let i of arrayAnni(70,1950)" [value]="i.toString()">{{i}}</mat-option> -->
+				  <mat-option *ngFor="let i of arrayAnni(70,1950)" [value]="i">{{i}}</mat-option>
+				</mat-select>
+				<mat-error *ngIf="studio.controls['anno'].hasError('required')">
+					Campo obligatorio
+				</mat-error>
+				<mat-hint>Indicare l'anno di conseguimento</mat-hint>
+			</mat-form-field>
+		</div>
+		<div class="col-sm-2">
+			<mat-form-field class="form-group">
+				<mat-label>Voto</mat-label>
+				<input type="text" formControlName="voto" matInput name="voto" id="field_voto"
+					 [errorStateMatcher]="matcher" placeholder="voto..." required />
+				<mat-error *ngIf="studio.get('voto').hasError('required')">
+					Campo obligatorio
+				</mat-error>
+				<mat-hint>Indicare il voto</mat-hint>
+			</mat-form-field>
+		</div>		
+	</div>
+</form>

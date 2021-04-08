@@ -1,0 +1,27 @@
+{
+  "jemoloRoosterApp": {
+    "titoloStudio": {
+      "home": {
+        "title": "Titolo Studios",
+        "createLabel": "Create a new Titolo Studio",
+        "createOrEditLabel": "Create or edit a Titolo Studio",
+        "notFound": "No Titolo Studios found"
+      },
+      "created": "A new Titolo Studio is created with identifier {{ param }}",
+      "updated": "A Titolo Studio is updated with identifier {{ param }}",
+      "deleted": "A Titolo Studio is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Titolo Studio {{ id }}?"
+      },
+      "detail": {
+        "title": "Titolo Studio"
+      },
+      "tipologia": "Tipologia",
+      "descrizione": "Descrizione",
+      "conseguimento": "Conseguimento",
+      "anno": "Anno",
+      "voto": "Voto",
+      "candidato": "Candidato"
+    }
+  }
+}

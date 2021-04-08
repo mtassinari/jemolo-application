@@ -1,0 +1,23 @@
+{
+  "jemoloApplicationApp": {
+    "allegato": {
+      "home": {
+        "title": "Curricula in formato file",
+        "createLabel": "Carica un nuovo allegato cv",
+        "createOrEditLabel": "Aggiungi un nuovo allegato cv",
+        "notFound": "Non sono presenti cv allegati"
+      },
+      "created": "&Egrave; stato caricato un nuovo cv allegato id: {{ param }}",
+      "updated": "&Egrave; stato modificato un cv allegato id: {{ param }}",
+      "deleted": "&Egrave; stato eliminato il cv allegato con id: {{ param }}",
+      "delete": {
+        "question": "Sei sicuro di volere eliminare l''Allegato id: {{ id }}?"
+      },
+      "detail": {
+        "title": "Allegato cv"
+      },
+      "data": "File",
+      "curriculum": "Curriculum"
+    }
+  }
+}

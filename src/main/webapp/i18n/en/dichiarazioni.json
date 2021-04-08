@@ -1,0 +1,23 @@
+{
+  "jemoloApplicationApp": {
+    "dichiarazioni": {
+      "home": {
+        "title": "Dichiarazionis",
+        "createLabel": "Create a new Dichiarazioni",
+        "createOrEditLabel": "Create or edit a Dichiarazioni",
+        "notFound": "No Dichiarazionis found"
+      },
+      "created": "A new Dichiarazioni is created with identifier {{ param }}",
+      "updated": "A Dichiarazioni is updated with identifier {{ param }}",
+      "deleted": "A Dichiarazioni is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Dichiarazioni {{ id }}?"
+      },
+      "detail": {
+        "title": "Dichiarazioni"
+      },
+      "descrizione": "Descrizione",
+      "dichiarazioniObligatorie": "Dichiarazioni Obligatorie"
+    }
+  }
+}

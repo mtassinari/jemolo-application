@@ -1,0 +1,105 @@
+<div class="overlay" *ngIf="ricerca">
+<div class="center">
+    <!-- <mat-progress-spinner diameter=50 
+	                      mode="indeterminate"
+						  color="accent">
+	</mat-progress-spinner> -->
+	<mat-spinner></mat-spinner>
+</div>
+</div>
+<div class="row justify-content-center">
+    <div class="col-10">
+    <jhi-alert></jhi-alert>
+	<form name="ricercaForm" role="form" novalidate (ngSubmit)="ricercaIscritto()" [formGroup]="ricercaForm">
+	  <h2>Ricerca Iscritti</h2>
+	  <div class="form-row">
+	    <div class="form-group col-md-12">
+	      <label for="inputCognome">Cognome</label>
+	      <input type="text" formControlName="cognome" oninput="this.value = this.value.toUpperCase()" class="form-control" id="inputCognome" placeholder="Cognome">
+	    </div>
+	  </div>
+	  <div class="form-row">
+	    <div class="form-group col-md-12">
+	      <label for="inputNome">Nome</label>
+	      <input type="text" formControlName="nome" oninput="this.value = this.value.toUpperCase()" class="form-control" id="inputNome" placeholder="Nome">
+	    </div>
+	  </div>
+	  <div class="form-row">
+	    <div class="form-group col-md-8">
+	      <label for="inputTipotitolostudio">Titolo di studio: tipologia</label>
+	      <select id="inputTipotitolostudio" name="tipotitolostudio" formControlName="tipotitolodistudioId" #item  (change)="parametriRicercaChange(item.name,item.value)" class="form-control">
+	        <!-- <option [ngValue]="null" >Scegli...</option> -->
+	        <option [value]=null >Scegli...</option>
+	        <option *ngFor="let tipologia of tipologie" [value]="tipologia.value">{{tipologia.viewValue}}</option>
+	      </select>
+	    </div>
+	    <div class="form-group col-md-2">
+	      <label for="inputTitolostudioannodal">Anni conseguimento dal</label>
+	      <select id="inputTitolostudioannodal" name="titoloDiStudioDal" formControlName="titolostudioDal" #item2  (change)="parametriRicercaChange(item2.name,item2.value)" class="form-control">
+	        <!-- <option [ngValue]="null" >Scegli...</option> -->
+	        <option [value]="null" >Scegli...</option>
+	        <option  *ngFor="let i of arrayAnni(70,1950)" [value]="i.toString()">{{i}}</option>
+	      </select>
+	    </div>
+	    <div class="form-group col-md-2">
+	      <label for="inputTitolostudioannoal">al</label>
+	      <select id="inputTitolostudioannoal" name="titolostudioAl" formControlName="titolostudioAl" #item3  (change)="parametriRicercaChange(item3.name,item3.value)" class="form-control">
+	        <!-- <option [ngValue]="null" >Scegli...</option> -->
+	        <option [value]="null" >Scegli...</option>
+	        <option  *ngFor="let i of arrayAnni(70,1950)" [value]="i.toString()">{{i}}</option>
+	      </select>
+	    </div>
+	  </div>
+	  <div class="form-row">
+	    <div class="form-group col-md-8">
+	      <label for="inputAreacompetenza">Area di competenza</label>
+	      <select id="inputAreacompetenza" name="areacompetenza" formControlName="areaCompetenzaId" (change)="parametriRicercaChange($event.target.name,$event.target.value)" class="form-control">
+	        <!-- <option [ngValue]="null" >Scegli...</option> -->
+	        <option [value]="null" >Scegli...</option>
+	        <optgroup  *ngFor="let competenza of ambitoCompetenzas" [label]="competenza.descrizione">
+		        <option *ngFor="let sottoambito of competenza.sottoambitos" [value]="sottoambito.id">{{sottoambito.descrizione}}
+		        </option>
+	        </optgroup>
+	      </select>
+	    </div>
+	    <div class="form-group col-md-2">
+	      <label for="inputAnniesperienzada">Anni di esperienza da</label>
+	      <select id="inputAnniesperienzada" name="anniesperienzaDa" formControlName="areaCompetenzaDa" (change)="parametriRicercaChange($event.target.name,$event.target.value)" class="form-control">
+	        <!-- <option [ngValue]="null" >Scegli...</option> -->
+	        <option [value]="null" >Scegli...</option>
+	        <option  *ngFor="let i of arrayAnni(29,2)" [value]="i.toString()">{{i}}</option>
+	      </select>
+	    </div>
+	    <div class="form-group col-md-2">
+	      <label for="inputAnniesperienzaa">Anni di esperienza a</label>
+	      <select id="inputAnniesperienzaa" name="anniesperienzaA" formControlName="areaCompetenzaA" (change)="parametriRicercaChange($event.target.name,$event.target.value)" class="form-control">
+	        <!-- <option [ngValue]="null" >Scegli...</option> -->
+	        <option [value]="null" >Scegli...</option>
+	        <option  *ngFor="let i of arrayAnni(29,2)" [value]="i.toString()">{{i}}</option>
+	      </select>
+	    </div>
+	  </div>
+	  <div class="form-row">
+	    <div class="form-group col-md-8">
+	      <label for="inputLingua">Lingua</label>
+	      <select id="inputLingua" name="lingua" formControlName="linguaId" (change)="parametriRicercaChange($event.target.name,$event.target.value)" class="form-control">
+	        <option [value]="null" >Scegli...</option>
+	        <option *ngFor="let lingua of linguas" [value]="lingua.id">{{lingua.lingua}}</option>
+	      </select>
+	    </div>
+	    <div class="form-group col-md-4">
+	      <label for="inputLingualivello">Livello</label>
+	      <select id="inputLingualivello" name="livello" formControlName="linguaLivello" (change)="parametriRicercaChange($event.target.name,$event.target.value)" class="form-control">
+	        <!-- <option [ngValue]="null" >Scegli...</option> -->
+	        <option [value]="null" >Scegli...</option>
+	        <option *ngFor="let livello of livelli" [value]="livello.value">{{livello.viewValue}}</option>
+	      </select>
+	    </div>
+	  </div>
+	  <button type="submit" class="btn btn-primary">Ricerca</button>
+	</form>
+	</div>
+	<!-- <div *ngIf="show"> -->
+	<!-- <jhi-iscritto [parametriRicerca]="parametriRicerca"></jhi-iscritto> -->
+	<!-- </div> -->
+</div>

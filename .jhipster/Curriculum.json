@@ -1,0 +1,37 @@
+{
+    "name": "Curriculum",
+    "fields": [
+        {
+            "fieldName": "cv",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "note",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "candidato",
+            "otherEntityRelationshipName": "curriculum",
+            "relationshipValidateRules": "required",
+            "relationshipName": "candidato",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20191031093430",
+    "javadoc": "Entity Curriculum\\n@author Marco Tassinari",
+    "entityTableName": "curriculum",
+    "dto": "mapstruct",
+    "pagination": "pager",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

@@ -1,0 +1,56 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="candidato">
+            <h2><span jhiTranslate="jemoloApplicationApp.candidato.detail.title">Candidato</span> {{candidato.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="jemoloApplicationApp.candidato.nominativo">Nominativo</span></dt>
+                <dd>
+                    <span>{{candidato.nominativo}}</span>
+                </dd>
+                <dt><span jhiTranslate="jemoloApplicationApp.candidato.nome">Nome</span></dt>
+                <dd>
+                    <span>{{candidato.nome}}</span>
+                </dd>
+                <dt><span jhiTranslate="jemoloApplicationApp.candidato.cognome">Cognome</span></dt>
+                <dd>
+                    <span>{{candidato.cognome}}</span>
+                </dd>
+                <dt><span jhiTranslate="jemoloApplicationApp.candidato.codiceFiscale">Codice Fiscale</span></dt>
+                <dd>
+                    <span>{{candidato.codiceFiscale}}</span>
+                </dd>
+                <dt><span jhiTranslate="jemoloApplicationApp.candidato.email">Email</span></dt>
+                <dd>
+                    <span>{{candidato.email}}</span>
+                </dd>
+                <dt><span jhiTranslate="jemoloApplicationApp.candidato.statoregistrazione">Statoregistrazione</span></dt>
+                <dd>
+                    <div *ngIf="candidato.stato">
+                        <!-- <a [routerLink]="['/stato-registrazione', candidato.statoId, 'view']">{{candidato.stato.descrizione}}</a> -->
+                        {{candidato.stato.descrizione}}
+                    </div>
+                </dd>
+                <!-- <dt><span jhiTranslate="jemoloApplicationApp.candidato.anagraficaCandidatoId">Anagrafica</span></dt>
+                <dd>
+                    <div *ngIf="candidato.anagraficaCandidatoId">
+                        <a [routerLink]="['/jemolouser/anagrafica-candidato', candidato.anagraficaCandidatoId, 'view']">{{candidato.anagraficaCandidatoId}}</a>
+                    </div>
+                </dd> -->
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/jemolouser/candidato', candidato.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,40 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+    <changeSet author="mtassinari (generated)" id="1569927926102-1">
+        <createTable tableName="candidato_authority">
+            <column name="candidato_id" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="authority_name" type="VARCHAR(50)">
+                <constraints primaryKey="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="mtassinari (generated)" id="1569927926102-2">
+        <addColumn tableName="candidato">
+            <column name="login" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+        </addColumn>
+    </changeSet>
+    <changeSet author="mtassinari (generated)" id="1569927926102-3">
+        <addUniqueConstraint columnNames="login" constraintName="UC_CANDIDATOLOGIN_COL" tableName="candidato"/>
+    </changeSet>
+    <changeSet author="mtassinari (generated)" id="1569927926102-4">
+        <addForeignKeyConstraint baseColumnNames="candidato_id" 
+        						 baseTableName="candidato_authority" 
+        						 constraintName="fk_candidato_autority" 
+        						 deferrable="false" initiallyDeferred="false" 
+        						 referencedColumnNames="id" 
+        						 referencedTableName="candidato" 
+        						 validate="true"/>
+    </changeSet>
+    <changeSet author="mtassinari (generated)" id="1569927926102-5">
+        <addForeignKeyConstraint baseColumnNames="authority_name" 
+        						 baseTableName="candidato_authority" 
+        						 constraintName="fk_autority_name" 
+        						 deferrable="false" initiallyDeferred="false" 
+        						 referencedColumnNames="name" 
+        						 referencedTableName="jhi_authority" validate="true"/>
+    </changeSet>
+</databaseChangeLog>

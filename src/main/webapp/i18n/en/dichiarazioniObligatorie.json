@@ -1,0 +1,24 @@
+{
+  "jemoloRoosterApp": {
+    "dichiarazioniObligatorie": {
+      "home": {
+        "title": "Dichiarazioni Obligatories",
+        "createLabel": "Create a new Dichiarazioni Obligatorie",
+        "createOrEditLabel": "Create or edit a Dichiarazioni Obligatorie",
+        "notFound": "No Dichiarazioni Obligatories found"
+      },
+      "created": "A new Dichiarazioni Obligatorie is created with identifier {{ param }}",
+      "updated": "A Dichiarazioni Obligatorie is updated with identifier {{ param }}",
+      "deleted": "A Dichiarazioni Obligatorie is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Dichiarazioni Obligatorie {{ id }}?"
+      },
+      "detail": {
+        "title": "Dichiarazioni Obligatorie"
+      },
+      "stato": "Stato",
+      "anagrafica": "Anagrafica",
+      "dichiarazioni": "Dichiarazioni"
+    }
+  }
+}

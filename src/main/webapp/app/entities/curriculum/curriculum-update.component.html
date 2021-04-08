@@ -1,0 +1,97 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-curriculum-heading" jhiTranslate="jemoloApplicationApp.curriculum.home.createOrEditLabel">Create or edit a Curriculum</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!editForm.get('id').value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jemoloApplicationApp.curriculum.cv" for="field_cv">Cv</label>
+                    <input type="text" class="form-control" name="cv" id="field_cv"
+                           formControlName="cv"/>
+                    <div *ngIf="editForm.get('cv').invalid && (editForm.get('cv').dirty || editForm.get('cv').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('cv').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jemoloApplicationApp.curriculum.urlAllegato" for="field_urlAllegato">Url Allegato</label>
+                    <input type="text" class="form-control" name="urlAllegato" id="field_urlAllegato"
+                           formControlName="urlAllegato"/>
+                    <div *ngIf="editForm.get('urlAllegato').invalid && (editForm.get('urlAllegato').dirty || editForm.get('urlAllegato').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('urlAllegato').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jemoloApplicationApp.curriculum.attach" for="field_attach">Allegato</label>
+                    <select class="form-control" id="field_attach" name="allegato" formControlName="allegatoId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="allegatoOption.id" *ngFor="let allegatoOption of attaches; trackBy: trackAllegatoById">{{allegatoOption.id}}</option>
+                    </select>
+                </div>
+                <div *ngIf="editForm.get('allegatoId').invalid && (editForm.get('allegatoId').dirty || editForm.get('allegatoId').touched)">
+                    <small class="form-text text-danger"
+                           *ngIf="editForm.get('allegatoId').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                    </small>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jemoloApplicationApp.curriculum.size" for="field_size">Size</label>
+                    <input type="number" class="form-control" name="size" id="field_size"
+                           formControlName="size"/>
+                    <div *ngIf="editForm.get('size').invalid && (editForm.get('size').dirty || editForm.get('size').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('size').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('size')?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jemoloApplicationApp.curriculum.mimeType" for="field_mimeType">Mime Type</label>
+                    <input type="text" class="form-control" name="mimeType" id="field_mimeType"
+                           formControlName="mimeType"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jemoloApplicationApp.curriculum.candidato" for="field_candidato">Candidato</label>
+                    <select class="form-control" id="field_anagrafica" name="anagrafica" formControlName="anagraficaId">
+                        <option *ngIf="!editForm.get('anagraficaId').value" [ngValue]="null" selected></option>
+                        <option [ngValue]="anagraficaCandidatoOption.id" *ngFor="let anagraficaCandidatoOption of anagraficacandidatoes; trackBy: trackAnagraficaCandidatoById">
+                        {{anagraficaCandidatoOption.nome}} {{anagraficaCandidatoOption.cognome}}</option>
+                    </select>
+                </div>
+                <div *ngIf="editForm.get('anagraficaId').invalid && (editForm.get('anagraficaId').dirty || editForm.get('anagraficaId').touched)">
+                    <small class="form-text text-danger"
+                           *ngIf="editForm.get('anagraficaId').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                    </small>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jemoloApplicationApp.curriculum.note" for="field_note">Note</label>
+                    <input type="text" class="form-control" name="note" id="field_note"
+                           formControlName="note"/>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

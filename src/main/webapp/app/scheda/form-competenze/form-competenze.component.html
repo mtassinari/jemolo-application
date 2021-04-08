@@ -1,0 +1,64 @@
+<form [formGroup]="comp">
+	<mat-error *ngIf="competenzeFormGroup.hasError('requireCheckboxToBeChecked') && 
+		(competenzeFormGroup.dirty || competenzeFormGroup.touched)">
+		<span>Si deve selezionare l'ambito o gli ambiti esperienza possaduta</span>
+	</mat-error>
+	<!-- compListChild.length: {{compList.length}}
+	compListChild.staus: {{compList.status}} -->
+	<div formArrayName="competenze">
+		<div *ngFor="let var_comp2 of competenzeFormGroup.controls; let ix = index;">
+		<mat-card>
+		<div [formGroupName]="ix">
+			<!-- <div *ngIf="!var_comp2.controls['ambitoComp'].value.ambito"> -->
+			<mat-card-header>
+				<mat-card-title><!-- <mat-icon>work</mat-icon> -->{{getCompFormGroup(ix).controls['descrizione'].value}}</mat-card-title>
+			</mat-card-header>
+				<!-- <h5>{{getCompFormGroup(ix).controls['descrizione'].value}}</h5> -->
+			<!-- </div> -->
+			<!-- <div *ngIf="var_comp.controls['ambitoComp'].value.ambito"> -->
+			<div formArrayName="sottoambitos">
+			<mat-card-content>
+			<div *ngFor="let var_comp of getCompetenzeFormGroup(ix).controls; let i = index;">
+			<div class="form-row align-items-center" [formGroupName]="i">
+				<div class="col-sm-6 my-1">
+				<div class="form-check">
+					<mat-checkbox class="form-check-input" color="primary" formControlName="selected" labelPosition="after" 
+					(change)="onChange2($event, ix, i, var_comp)">
+					<!-- {{var_comp.controls['ambitoComp'].value.id}} - 
+					{{getCompFormGroup(i).controls['ambitoComp'].value.id}} - -->
+					{{getCompFormGroup2(ix,i).controls['descrizione'].value}} 
+					</mat-checkbox>
+				</div>
+				</div>
+				<div class="col-sm-6 my-1">
+					<mat-form-field class="input-group">
+					<mat-label>Anni di esperienza</mat-label>
+					  <select formControlName="anniEsperianza" matNativeControl [errorStateMatcher]="matcher"
+					  (change)="onChange2($event, ix, i, var_comp)">
+					    <option [value]=""  selected></option>
+					    <option *ngFor="let i of arrayAnni(29,2)" [value]="i">{{i}}</option>
+					  </select>
+						<mat-error *ngIf="getCompFormGroup2(ix,i).controls['anniEsperianza'].hasError('required')">
+							<span jhiTranslate="entity.validation.required">Campo obligatorio</span>
+						</mat-error>
+						<mat-error *ngIf="getCompFormGroup2(ix,i).controls['anniEsperianza'].hasError('min')">
+							<span>Anni di esperienza non sufficenti</span>
+						</mat-error>
+						<mat-hint>Inserire gli anni di esperienza</mat-hint>
+					</mat-form-field>
+				</div>
+			</div>
+			<!-- status:  {{getCompFormGroup2(ix,i).controls['anniEsperianza'].status}}
+			error:  {{getCompFormGroup2(ix,i).controls['anniEsperianza'].errors?.required}} -->	
+			</div>
+			</mat-card-content>
+			</div>
+		</div>
+		</mat-card>	
+		<!-- status:  {{getCompFormGroup(ix).status}}
+		error:  {{getCompFormGroup(ix).errors?.required}} -->	
+		</div>
+		<!-- status:  {{competenzeFormGroup.status}}
+		error:  {{competenzeFormGroup.errors?.required}} -->
+	</div>	
+</form>
